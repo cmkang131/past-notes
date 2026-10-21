@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 07 · Functions 2 and Set(함수 2와 집합) — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Lab 07 · Functions 2 and Set(함수 2와 집합)</h1>
+<div class="t-meta">실습 · Notion 아카이브</div>
+<div class="body notes">
+<details open><summary><span class="k-blue">list comprehension(리스트 컴프리헨션)</span></summary>
+<ul>
+<li>[ 표현식 for 요소 in 시퀀스자료형 [if 조건문] ]</li>
+</ul>
+<pre><code class="lang-python">L = [ i ** 2 for i in range(1, 6) ]
+print(L)</code></pre>
+<ul>
+<li>&gt;&gt;&gt; [1, 4, 9, 16, 25]</li>
+</ul>
+<pre><code class="lang-python">L1 = [1,2,3]
+L2 = [3,4,5]
+
+L = [x*y for x in L1 for y in L2]
+print(L)</code></pre>
+<ul>
+<li>&gt;&gt;&gt; [3, 4, 5, 6, 8, 10, 9, 12, 15]</li>
+<ul>
+<li>x 반복문 안에 y반복문이 있는 것과 같은 결과가 도출됨.</li>
+</ul>
+</ul>
+</details>
+<details open><summary>zip()</summary>
+<ul>
+<li>2개 이상의 <span class="k-blue">list(리스트)</span>를, 각 리스트의 같은 인덱스 원소끼리 묶은 <span class="k-blue">tuple(튜플)</span>을 원소로 하는 리스트 반환할 수 있음</li>
+<li>list(zip(list1, list2)) 형태로 list안에 zip을 넣어야 함</li>
+</ul>
+<pre><code class="lang-python">L = list(zip([1,2,3], [4,5,6]))
+print(L)</code></pre>
+<ul>
+<li><code>\&gt;\&gt;\&gt; \[(1, 4), (2, 5), (3, 6)\]</code></li>
+</ul>
+<pre><code class="lang-python">L = [sum(x) for x in zip((1,2,3),(4,5,6),(7,8,9))]
+print(L)</code></pre>
+<ul>
+<li>&gt;&gt;&gt; [12, 15, 18]</li>
+</ul>
+<details open><summary>실습 1</summary>
+<pre><code class="lang-python">&#x27;아래와 같이 주어진 2개의 리스트로 딕셔너리를 만들어 출력&#x27;
+L1 = [&#x27;one&#x27;,&#x27;two&#x27;,&#x27;tree&#x27;,&#x27;four&#x27;]
+L2 = [1,2,3,4]
+
+result = dict(zip(L1,L2))
+print(result)</code></pre>
+</details>
+</details>
+<details open><summary>가변 <span class="k-blue">Parameter(매개변수)</span></summary>
+<ul>
+<li><span class="k-blue">Function(함수)</span> ⇒ *매개변수</li>
+</ul>
+<pre><code class="lang-python">&#x27;짝수 개수 구하기&#x27;
+
+def count_even(*n):
+    cnt = 0
+    for v in n:
+        if v % 2 == 0:
+            cnt += 1
+    return cnt
+
+print(count_even(1,2,3,4,5,6,7,8,9))</code></pre>
+<details open><summary>실수 2</summary>
+<pre><code class="lang-python">&#x27;1개 이상의 3차원 벡터들을 전달받아 벡터들의 합을 구하여 반환&#x27;
+
+def sum_vectors(*vectors):
+    return [sum(vals) for vals in zip(*vectors)]
+
+v1 = [0,1,2]
+v2 = [0.5, 0.5, 0.5]
+v3 = [1,3,5]
+
+vector_sum = sum_vectors(v1,v2,v3)
+print(vector_sum)</code></pre>
+</details>
+</details>
+<details open><summary>디폴트 매개변수</summary>
+<ul>
+<li>매개변수의 기본값을 지정</li>
+</ul>
+<pre><code class="lang-python">def print_name(first, second=&#x27;Kim&#x27;):
+    print(f&#x27;My name is {first} {second}.&#x27;)
+
+#함수 호출
+print_name(&#x27;HoChang&#x27;)</code></pre>
+<ul>
+<li>&gt;&gt;&gt; my name is HoChang Kim</li>
+</ul>
+<details open><summary>키워드 매개면수</summary>
+<ul>
+<li>함수 호출 시, 해당 매개변수 이름을 명시적으로 지정해서 전달</li>
+<li>즉, 호출할 때 순서보단 x=10, y=20 처럼 키워드로 입력</li>
+</ul>
+<pre><code class="lang-python">def calc(x,y=0,z=0):
+    return x+y+z
+
+result = calc(y=20, x=10, z=30)
+print(result)</code></pre>
+<ul>
+<li>&gt;&gt;&gt; 60</li>
+<li>calc(10,30,y=20) 이렇게 이미 y자리 입력하고 키워드에 넣으면 오류 발생</li>
+</ul>
+</details>
+<details open><summary>실습 3</summary>
+<pre><code class="lang-python">&#x27;숫자로 구성된 리스트 2개&#x27;
+&#x27;=&gt; 리스트 합친 후 정렬한 새로운 리스트 반환&#x27;
+
+def merge_list(l1=[0],l2=[0]):
+    ml = l1 + l2
+    ml.sort()
+    return ml
+
+
+if __name__ == &#x27;__main__&#x27;:
+    l = [3, 5, 9, 1, 2]
+    ml1 = merge_list(l,[2,1])
+    ml2 = merge_list([6,9,4])
+    ml3 = merge_list()
+    print(ml1) # [1, 1, 2, 2, 3, 5, 9]
+    print(ml2) # [0, 4, 6, 9]
+    print(ml3) # [0, 0]</code></pre>
+</details>
+</details>
+<details open><summary><span class="k-blue">set(집합)</span></summary>
+<ul>
+<li>순서 없이 항목 저장, 항목이 중볼될 수 없음</li>
+</ul>
+<pre><code class="lang-python">s1 = set([1,2,3,3,3,4,2])
+print(s1)</code></pre>
+<ul>
+<li>&gt;&gt;&gt; \{1,2,3,4\}</li>
+<li>set() 내장 함수</li>
+</ul>
+<pre><code class="lang-python">s = set([1,2,3,3,3,4,2])
+print(s)
+&#x27;1,2,3,4&#x27;
+
+#add
+s.add(10) #=&gt; 단일 요소를 더함
+print(s)
+&#x27;1,2,3,4,10&#x27;
+
+#remove
+s.remove(2)
+print(s)
+&#x27;1,3,4,10&#x27;
+
+#update
+s.update([1,3,5,7,9]) #=&gt; 리스트를 더함
+print(s)
+&#x27;1,3,4,5,7,9,10&#x27;
+
+#discard
+s.discard(7) #=&gt; 7을 제거
+print(s)
+&#x27;1,3,4,5,9,10&#x27;
+
+#clear
+s.clear()
+print(s)
+&#x27;set()&#x27;</code></pre>
+<ul>
+<li>집합 관련 내장 함수</li>
+</ul>
+<pre><code class="lang-python">s1 = {1,2,3}
+s2 = {3,4,5}
+
+#합집합(변경x,반환)
+print(s1.union(s2))
+print(s1|s2)
+&#x27;{1,2,3,4,5}&#x27;
+
+#교집합(변경x,반환)
+print(s1.intersection(s2))
+print(s1&amp;s2)
+&#x27;{3}&#x27;
+
+#차집합(변경x,반환)
+print(s1.difference(s2))
+print(s1 - s2)
+&#x27;{1,2}&#x27;</code></pre>
+<details open><summary>실습 4</summary>
+<pre><code class="lang-python">&#x27;두 사람이 등산한 산의 목록이 각각 집합(set)으로 주어질 때, 두 사람이&#x27;
+&#x27;모두 방문한 산과 한쪽만 방문한 산을 구하여 반환&#x27;
+
+def compare_mountains(h1,h2):
+    both = h1&amp;h2
+    one = (h1-h2)|(h2-h1)
+    return both, one
+
+if __name__ == &#x27;__main__&#x27;:
+    hiker_1 = {&#x27;설악산&#x27;, &#x27;한라산&#x27;, &#x27;지리산&#x27;, &#x27;태백산&#x27;}
+    hiker_2 = {&#x27;설악산&#x27;, &#x27;주왕산&#x27;, &#x27;덕유산&#x27;, &#x27;한라산&#x27;}
+    hiker_3 = {&#x27;무장산&#x27;, &#x27;주왕산&#x27;}
+    both1, one1 = compare_mountains(hiker_1, hiker_2)
+    both2, one2 = compare_mountains(hiker_1, hiker_3)
+    print(both1, one1)
+    &quot;{&#x27;한라산&#x27;, &#x27;설악산&#x27;} {&#x27;지리산&#x27;, &#x27;태백산&#x27;, &#x27;덕유산&#x27;, &#x27;주왕산&#x27;}&quot;
+    print(both2, one2)
+    &quot;set() {&#x27;한라산&#x27;, &#x27;지리산&#x27;, &#x27;태백산&#x27;, &#x27;무장산&#x27;, &#x27;설악산&#x27;, &#x27;주왕산&#x27;}&quot;</code></pre>
+</details>
+</details>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>

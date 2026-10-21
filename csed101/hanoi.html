@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example · Hanoi Tower(하노이 탑) — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Example · Hanoi Tower(하노이 탑)</h1>
+<div class="t-meta">예제 · Notion 아카이브</div>
+<div class="body notes">
+<ul>
+<li>&gt; 입력 조건</li>
+<ul>
+<li>n = 3 (원반 3개)</li>
+<li>from_peg = &#x27;A&#x27; (출발 기둥)</li>
+<li>to_peg = &#x27;C&#x27; (목적지 기둥)</li>
+<li>aux_peg = &#x27;B&#x27; (보조 기둥)</li>
+</ul>
+</ul>
+<ul>
+<ul>
+<li>실행 순서</li>
+<li>1.n-1개의 원반을 보조 기둥(aux_peg)으로 옮긴다.</li>
+<li>2.가장 큰 원반(n번 원반)을 목적지 기둥(to_peg)으로 옮긴다.</li>
+<li>3.n-1개의 원반을 보조 기둥(aux_peg)에서 목적지 기둥(to_peg)으로 옮긴다.</li>
+</ul>
+</ul>
+<pre><code class="lang-python">class hanoi_tower:
+    def __init__(self, n):
+        self.A = [i for i in range(n,0,-1)]
+        self.B = []
+        self.C = []
+        self._print()
+        self.move(n, self.A, self.C, self.B)
+    
+    def move(self, m, _from, _to, _side):
+        if m == 1:
+
+            _to.append(_from.pop())
+            self._print()
+            return
+
+        # Step 1 : m-1개를 보조 기둥으로 이동
+        self.move(m-1,_from,_side,_to)
+
+        # Step 2 : 가장 큰 원반을 목적지 기둥으로 이동
+        _to.append(_from.pop())
+        self._print()
+
+        # Step 3 : m-1개 보조 기둥을 목적지 기둥으로 이동
+        self.move(m-1, _side, _to, _from)
+
+    def _print(self):
+        print(f&#x27;{self.A},{self.B},{self.C}&#x27;)
+
+hanoi = hanoi_tower(3)</code></pre>
+<pre><code class="lang-python">[3, 2, 1],[],[]
+[3, 2],[],[1]
+[3],[2],[1]
+[3],[2, 1],[]
+[],[2, 1],[3]
+[1],[2],[3]
+[1],[],[3, 2]
+[],[],[3, 2, 1]</code></pre>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>

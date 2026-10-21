@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 10 · Object-Oriented Programming(객체지향 프로그래밍) — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Lecture 10 · Object-Oriented Programming(객체지향 프로그래밍)</h1>
+<div class="t-meta">강의 · Notion 아카이브</div>
+<div class="body notes">
+<details open><summary><span class="k-blue">Abstract Data Type(추상 데이터 타입)</span> (추상 데이터 타입, ADT)</summary>
+<ul>
+<li><img src="img/c1.webp" alt="" loading="lazy"></li>
+<li>‘어떤 데이터 타입은 ~ <span class="k-blue">Object(객체)</span>, ~ <span class="k-blue">Function(함수)</span>로 구성되어 있다’ ⇒ 사용설명서</li>
+<li>구현 부분을 나타내지 않음 → 비공개적</li>
+<li>사용법만 알면 ⇒ 데이터 타입을 쉽게 쓸 수 있음</li>
+<li>ADT를 통해 연산이 무엇이며 어떻게 작용하는지 알 수 있음</li>
+<li>즉, 데이터에 대한 연산들의 <span class="k-blue">set(집합)</span>을 묶어서 하나의 단위로 정의하는 프로그래밍 개념</li>
+<ul>
+<li>⇒ 프로그래밍 디자인과 구현을 용이하게 함<br><span class="k-blue">Encapsulation(캡슐화)</span></li>
+<ul>
+<li>객체지향프로그래밍</li>
+<li>연관된 데이터와 함수를 논리적으로 묶어놓음, 데이터를 보호하기 위해 다른 객체의 접근을 제한 ⇒ <span class="k-blue">Class(클래스)</span> 명령어를 사용하여 구현할 수 있음</li>
+</ul>
+</ul>
+</ul>
+</details>
+<details open><summary>Object Oriented Programming (객체 지향 프로그래밍)</summary>
+<ul>
+<li>기능을 묶어두는 것이 아니라, 데이터와 처리하는 기능을 묶은 하나의 단일 프로그램 객체</li>
+<li><span class="k-blue">Abstraction(추상화)</span></li>
+<ul>
+<li>복잡한 현실 세계를 객체로 모델링 → 단순화</li>
+</ul>
+<li>Encapsulation(캡슐화)</li>
+<ul>
+<li>객체의 상태와 행위를 하나로 묶어 외부에서의 접근을 제한함으로써 객체를 보호</li>
+</ul>
+<li><span class="k-blue">Inheritance(상속)</span></li>
+<ul>
+<li>이미 있는 클래스로 새로운 클래스를 생성하는 과정</li>
+</ul>
+</ul>
+</details>
+<details open><summary>Class</summary>
+<ul>
+<li>User-defined data type</li>
+</ul>
+<pre><code class="lang-python">#1단계 : 클래스 생성
+class  Car :
+    color = &quot;&quot;
+    speed = 0
+
+    def upSpeed(self, value) :
+        self.speed += value
+    
+    def downSpeed(self, value) :
+        self.speed -= value
+        
+#2단계 : 객체 생성 (인스턴트 생성)
+mycar1=Car() 
+
+#3단계 : 필드나 메소드 사용
+mycar1.spped = 0
+mycar1.color = &quot;파랑&quot;
+mycar1.upSpeed(30)
+
+print(f&quot;생상 = {mycar1.color}, 속도 = {mycar1.speed}&quot;)
+ # 색상 = 파랑, 속도 = 30</code></pre>
+</details>
+<details open><summary><span class="k-blue">Constructor(생성자)</span></summary>
+<ul>
+<li><span class="k-blue">Instance(인스턴스)</span>를 생성하면 호출되는 메소드</li>
+<ul>
+<li>mycar1=Car() <br>mycar1.spped = 0<br>mycar1.color = &quot;파랑&quot;</li>
+</ul>
+<li>에서 1행에 instance 생성 후 2,3행에서 따로 초기화를 했는데,</li>
+<li>1행 자체에서 instance 생성과 동시에 필드값을 초기화 할 수 있음.</li>
+</ul>
+<pre><code class="lang-python">class Car:
+color = &#x27;&#x27;
+speed = 0
+
+def __init__(self):
+	self.color = &quot;빨강&quot;
+	self.speed = 0
+
+myCar1 = Car()</code></pre>
+<ul>
+<li>⇒ Instance를 생성하면 자동으로 Constructor가 호출</li>
+<li><span class="k-blue">Parameter(매개변수)</span>가 있는 Constructor가 있을 수 있음</li>
+</ul>
+<pre><code class="lang-python">class Car:
+color = &#x27;&#x27;
+speed = 0
+
+def __init__(self, value1, value2):
+	self.color = value1
+	self.speed = value2
+	
+## upSpeed(), downSpeed() 함수
+
+myCar1 = Car(&quot;빨강&quot;, 30)
+print(f&quot;생상 = {mycar1.color}, 속도 = {mycar1.speed}&quot;)</code></pre>
+<ul>
+<li>&gt;&gt; 생상 = 빨강, 속도 = 30</li>
+</ul>
+<pre><code class="lang-python">class ~~:
+
+### ~~ 생략
+def getName(self):
+	return self.name
+def getSpeed(self):
+	return self.speed
+	
+print(car1.getName(), car1.getSpeed())
+#=&gt; 이름과 스피드를 반환하는 함수를 메소드로 만들 수 있음</code></pre>
+</details>
+<details open><summary><span class="k-blue">Instance variable(인스턴스 변수)</span> &amp; <span class="k-blue">Class variable(클래스 변수)</span></summary>
+<ul>
+<li>instance variable : class 안에 있지만, instance마다 변하게 됨.</li>
+<li>Class variable : class 안에 공간이 할당된 변수</li>
+</ul>
+<pre><code class="lang-python">class Car:
+color = &#x27;&#x27; # 인스턴트 변수
+speed = 0 # 인스턴트 변수
+count = 0 # 클래스 변수
+
+def __init__(self):
+	self.speed = 0
+	Car.count += 1
+
+myCar1, myCar2 = None, None
+
+myCar1 = Car()
+myCar1.speed = 30
+print(myCar1.speed, Car.count) # 30, 1
+
+myCar2 = Car()
+myCar2.speed = 60
+print(myCar2.speed, myCar2.count) # 60, 2</code></pre>
+<ul>
+<li>⇒ Car.count, myCar2.count 모두 접근할 수 있음</li>
+</ul>
+</details>
+<details open><summary>Inheritance</summary>
+<ul>
+<li>기존 class의 필와 메소드를 그대로 물려받는 새로운 class</li>
+</ul>
+<pre><code class="lang-python">class 서브 클래스(슈퍼 클래스):
+//서브 클래스의 내용을 코딩</code></pre>
+<ul>
+<li>ex&gt; 자동차 클래스를 만들고, 승용차와 이를 상속받도록 할 수 있음</li>
+</ul>
+<pre><code class="lang-python">class Car:
+speed = 0
+
+def upSpeed(self, value):
+	self.speed += value
+
+def downSpeed(self, value):
+	self.speed -= value
+	
+class Sedan(Car):
+seatNum = 0
+
+def getSeatNum(self):
+	return self.seatNum</code></pre>
+<ul>
+<li><span class="k-blue">Method(메서드)</span> Overriding</li>
+<ul>
+<li>슈퍼 Class의 메소드를 서브 Class에서 재정의 하는 것</li>
+</ul>
+</ul>
+<pre><code class="lang-python">class Car:
+speed = 0
+
+def upSpeed(self, value):
+	self.speed += value
+
+def downSpeed(self, value):
+	self.speed -= value
+	
+class Sedan(Car):
+seatNum = 0
+
+def upSpeed(self, value):
+	self.speed += value
+	
+	if self.speed&gt;150:
+			self.speed = 150
+			
+	// 최대속도라는 새로운 조건을 추가할 수 있음
+
+def getSeatNum(self):
+	return self.seatNum
+	</code></pre>
+</details>
+<details open><summary><span class="k-blue">Operator Overloading(연산자 오버로딩)</span></summary>
+<ul>
+<li>사용자 정의 클래스에서 +, -, *, == 같은 연산자를 직접 정의해서 사용하는 것</li>
+<li><img src="img/c2.webp" alt="" loading="lazy"></li>
+<li><span class="hl">__add__를 메소드로 정의하면 + 연산자를 사용할 수 있음</span></li>
+</ul>
+<pre><code class="lang-python">class Vector:
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def get_vector(self):
+        return self.x, self.y
+
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+v3 = v1.__add__(v2)
+print(v3.get_vector())
+v3 = v1 + v2
+print(v3.get_vector())</code></pre>
+<ul>
+<li><code>\&gt;(4, 6) (4, 6)</code></li>
+<li>⇒ v1 + v2가 자동으로 <span class="k-blue">add</span> 메서드를 호출해 (4,6)을 반환</li>
+</ul>
+</details>
+<details open><summary><span class="k-blue">Polymorphism(다형성)</span></summary>
+<ul>
+<li>inheritance 관계 내의 다른 Class들의 instance들이 같은 멤버 함수 호출(같은 방법)에 대해 각각 다르게 반응하도록 하는 기능</li>
+</ul>
+<pre><code class="lang-python">class Animal:
+    def __init__(self, name):    
+        self.name = name
+    def speak(self):             
+        return &#x27;알 수 없음&#x27;
+ 
+class Dog(Animal):
+    def speak(self):
+        return &#x27;멍멍!&#x27;
+ 
+class Cat(Animal):
+    def speak(self):
+        return &#x27;야옹!&#x27;
+ 
+animalList = [Dog(&#x27;dog1&#x27;),
+             Dog(&#x27;dog2&#x27;),
+             Cat(&#x27;cat1&#x27;)]
+ 
+for a in animalList:
+    print (a.name + &#x27;: &#x27; + a.speak())</code></pre>
+</details>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 12 · Numpy and Pandas — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Lab 12 · Numpy and Pandas</h1>
+<div class="t-meta">실습 · Notion 아카이브</div>
+<div class="body notes">
+<details open><summary>NumPy</summary>
+<ul>
+<li>다차원 <span class="k-blue">Array(배열)</span> <span class="k-blue">Object(객체)</span>를 연산하는 도구 제공</li>
+<li>&gt; import numpy as np</li>
+</ul>
+<pre><code class="lang-python">import numpy as np
+
+# 1차원 배열 생성
+
+a = np.array([0, 1, 2, 3, 4, 5])
+print(a) # [0 1 2 3 4 5]
+print(type(a)) # numpy.ndarray
+
+# 2차원 배열 생성
+a = np.array([[0, 1, 2], [3, 4, 5]])
+print(a)
+# [[0 1 2]
+#  [3 4 5]]</code></pre>
+<pre><code class="lang-python">import numpy as np
+
+# np.zeros(): 0으로 이루어진 배열 생성
+zeros = np.zeros((3,4))   #matrix 크기 : 튜플 (n,m)을 넣음
+print(zeros)
+#[[0. 0. 0. 0.]
+# [0. 0. 0. 0.]
+# [0. 0. 0. 0.]]
+
+# np.ones(): 1로 이루어진 배열 생성
+ones = np.ones((3,4))
+print(ones)
+#[[1. 1. 1. 1.]
+# [1. 1. 1. 1.]
+# [1. 1. 1. 1.]]
+
+# np.arange(): 특정 범위에 있는 정수 생성; python의 range()와 유사
+aranges = np.arange(1,13)
+print(aranges)
+# [ 1  2  3  4  5  6  7  8  9 10 11 12]
+
+# array.reshape()
+# 기존 배열 -&gt;  nXm 형태의 2차원 배열로 재구성한 배열 생성
+reshape = np.reshape([1,2,3,4,5,6,7,8,9,10,11,12],(3,4)) # input을 (np list,(n,m))
+print(reshape)
+reshape = aranges.reshape((3,4)) #np list . reshape((n,m))
+print(reshape)
+#[[ 1  2  3  4]
+# [ 5  6  7  8]
+# [ 9 10 11 12]]</code></pre>
+</details>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>

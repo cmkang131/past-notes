@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 15 · Python Library — Numpy — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Lecture 15 · Python Library — Numpy</h1>
+<div class="t-meta">강의 · Notion 아카이브</div>
+<div class="body notes">
+<details open><summary>Python <span class="k-blue">list(리스트)</span> vs Numpy <span class="k-blue">Array(배열)</span> #Quiz</summary>
+<ul>
+<li>Python list</li>
+<ul>
+<li>장점 :</li>
+<ul>
+<li>유연성 - 다양한 데이터 포함, 크기가 동적</li>
+<li>내장 <span class="k-blue">Function(함수)</span> - 다양한 내장함수, <span class="k-blue">Method(메서드)</span>가 있음</li>
+</ul>
+<li>단점 :</li>
+<ul>
+<li>속도 - 반복문을 통해 요소별로 수행 ⇒ 큰 데이터에 속도 느림</li>
+<li>메모리 사용 - 요소에 대한 정보 저장을 위한 추가적인 메모리 공간 사용</li>
+</ul>
+</ul>
+<li>Numpy Array</li>
+<ul>
+<li>장점 :</li>
+<ul>
+<li>성능 - C로 구현 ⇒ 반복문 없이 벡터화된 연산 수행 가능 = 빠르고 효율</li>
+<li>메모리 - 연속된 메모리 공간에 데이터를 저장, 효율적</li>
+<li>다차원 배열 지원 - 행렬연산, 다차원 데이터 처리 용이</li>
+<li>다양한 수학 함수 - 다양한 수학 함수와 연산을 제공</li>
+</ul>
+<li>단점 :</li>
+<ul>
+<li>유연성 - 한 가지 데이터 유형만 포함 ⇒ 크기의 동적 조절X</li>
+<li>추가 기능 부족 - 수학함수, 배열조작함수에 중점을 둬 추가 기능에는 제한적</li>
+</ul>
+</ul>
+</ul>
+</details>
+<details open><summary>Numpy 주요 함수</summary>
+<ul>
+<li><code>numpy.array()</code></li>
+<ul>
+<li>배열 생성. 리스트나 <span class="k-blue">tuple(튜플)</span>을 입력받아 NumPy 배열로 변환</li>
+</ul>
+<li><code>numpy.zeros()</code></li>
+<ul>
+<li>모든 요소가 0인 배열을 생성, 지정된 크기의 0으로 채워진 배열 생성</li>
+</ul>
+<li><code>numpy.ones()</code></li>
+<ul>
+<li>모든 요소가 1인 배열 생성.</li>
+</ul>
+<li><code>numpy.arange()</code></li>
+<ul>
+<li>주어진 범위 내에서 일정한 간격으로 값이 증가하는 1차원 배열</li>
+</ul>
+<li><code>numpy.linspace()</code></li>
+<ul>
+<li>주어진 범위 내에서 지정된 개수의 일정한 간격으로 값이 증가하는 1차원 배열</li>
+</ul>
+<li><code>numpy.reshape()</code></li>
+<ul>
+<li>배열의 형태를 변경하는 함수. 차원과 크기를 재조정</li>
+</ul>
+<li><code>numpy.transpose()</code></li>
+<ul>
+<li>배열의 차원을 변경하거나 축의 순서를 변경</li>
+</ul>
+</ul>
+<ul>
+<li><code>numpy.sum()</code></li>
+<li><code>numpy.mean()</code></li>
+<li><code>numpy.max()</code></li>
+<li><code>numpy.min()</code></li>
+<li><code>numpy.matmul()</code></li>
+<ul>
+<li>다차원 배열에 대한 행렬 곱셈을 수행</li>
+</ul>
+<li><code>numpy.sort()</code></li>
+<ul>
+<li>축을 지정 → 축을 따라 <span class="k-blue">Sort(정렬)</span></li>
+</ul>
+<li><code>numpy.argmax() / numpy.argmin()</code></li>
+<li>배열에서 최댓값/최솟값의 인덱스를 반환, 축을 지정하여 축에 따라 값을 찾음</li>
+</ul>
+</details>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>
