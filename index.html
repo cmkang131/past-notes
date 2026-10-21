@@ -3,99 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CSED490E NLP 노트</title>
+<title>데이터와 경제학 마케팅 노트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Nanum+Pen+Script&family=Caveat&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="paper">
-  <div class="course">CSED490E · 자연어처리 · 포스텍</div>
-  <h1>NLP 노트</h1>
-  <div class="sub">시험 대비, 수업 노트, 팀 프로젝트 정리.</div>
+  <div class="course">CMEF499D · 특강: 데이터와 경제학 모델을 활용한 마케팅 전략의 이해 · 포스텍</div>
+  <h1>데이터와 경제학 마케팅 노트</h1>
+  <div class="sub">정진호 교수님 · 2026 가을 · 월·수 12:30. 엑셀 + 해 찾기로 푸는 마케팅 분석. 강의 정리와 퀴즈 대비를 한 곳에.</div>
+
   <section>
-    <h2>시험 대비</h2>
-    <a class="card" href="midterm-review.html">
-          <span class="go">→</span>
-          <div class="card-t">중간고사 범위 총정리</div>
-          <div class="card-d">AI/ML/DL 개요 · regular expression(정규식) · tokenization(토큰화) · N-gram LM · Naive Bayes · logistic regression(로지스틱 회귀) · 신경망과 backpropagation(역전파) · word2vec · RNN/LSTM · attention(어텐션) · Transformer(트랜스포머) — 노트 7개 페이지 압축</div>
-          <div class="card-m">문제풀이용 개념과 대표 예시 · 2026.10.16 기준</div>
-        </a>
-    <a class="card" href="exam-info.html">
-          <span class="go">→</span>
-          <div class="card-t">시험 정보 모음</div>
-          <div class="card-d">교수님이 수업에서 시험에 대해 한 말 정리 — 일정 변천(10/27 → 10/23 → 목요일 조정), 범위, 계산기 지참</div>
-          <div class="card-m">2026.10.15 기준 · 녹취 대조</div>
-        </a>
-    <a class="card" href="pages/midterm.html">
-          <span class="go">→</span>
-          <div class="card-t">중간고사(작년) — 시험 범위 정리</div>
-          <div class="card-d">Regex(정규식) · BPE(바이트 쌍 인코딩) · N-gram LM(언어 모델) · Perplexity(퍼플렉시티) · Naive Bayes(나이브 베이즈) · Logistic Regression(로지스틱 회귀) · 신경망 손계산 · Words and Vectors · RNN(순환 신경망)</div>
-          <div class="card-m">10/23 11:00 · 50분 · 계산기 지참 · Edit distance(편집 거리) 제외 · 손계산 예제 전부 Python 검산</div>
-        </a>
+    <h2>강의 정리</h2>
+    <a class="card" href="lec1.html">
+      <span class="go">→</span>
+      <div class="card-t">1강 · 선형계획</div>
+      <div class="card-d">LP 모형 네 조각 · 꼭짓점 원리 · 라그랑주 승수 = 그림자 가격 · KKT · 예제 3개 (생산, 카페, 광고)</div>
+      <div class="card-m">슬라이드 그림 8장 · 수식 포함</div>
+    </a>
+    <a class="card" href="lec2.html">
+      <span class="go">→</span>
+      <div class="card-t">2강 · 피벗테이블과 데이터 읽기</div>
+      <div class="card-d">파레토 80-20 · 계절성 · 교란 · 합계 vs 평균 · PARETO 철물점 · Bakery · ESPN 구독자 프로필</div>
+      <div class="card-m">슬라이드 그림 12장</div>
+    </a>
+    <a class="card" href="lec3.html">
+      <span class="go">→</span>
+      <div class="card-t">3강 · 엑셀 요약 함수</div>
+      <div class="card-d">대표값 · 표준편차와 ±2σ 경험 규칙 · COUNTIF/SUMIF/AVERAGEIF · 조회 함수 (VLOOKUP, MATCH, INDEX)</div>
+      <div class="card-m">슬라이드 그림 3장 · 사용법은 엑셀 사용법 페이지에</div>
+    </a>
+    <a class="card" href="lec4.html">
+      <span class="go">→</span>
+      <div class="card-t">4강 · 수요함수와 최적 가격</div>
+      <div class="card-d">가격탄력성 · 선형/거듭제곱 수요 추정 · 보완재와 잠금 · 면도기-날 모형으로 최적 가격 (해 찾기)</div>
+      <div class="card-m">슬라이드 그림 10장 · 퀴즈 핵심 범위</div>
+    </a>
+    <a class="card" href="lec5.html">
+      <span class="go">→</span>
+      <div class="card-t">5강 · 가격 묶음</div>
+      <div class="card-d">소비자잉여 · 순수/혼합 묶음 · 크기별 가격 · Verizon 7상품 모형 · Evolutionary 해 찾기와 벌점</div>
+      <div class="card-m">슬라이드 그림 12장</div>
+    </a>
   </section>
+
   <section>
-    <h2>수업 노트</h2>
-    <a class="card" href="lec01.html">
-          <span class="go">→</span>
-          <div class="card-t">1강 · NLP 개요</div>
-          <div class="card-d">AI ⊃ ML ⊃ DL 포함관계와 정의 · 학기에 만날 모델(RNN, LSTM, Transformer(트랜스포머), BERT/GPT) · RAG(검색 증강 생성), 요약(summarization), VQA(visual question answering, 시각 질의응답) 등 대표 응용</div>
-          <div class="card-m">2026.09.15 · 오리엔테이션</div>
-        </a>
-    <a class="card" href="regex.html">
-          <span class="go">→</span>
-          <div class="card-t">정규식과 토큰화</div>
-          <div class="card-d">regular expression(정규식) 기본 연산자 · 치환과 capture(캡처) · ELIZA · tokenization(토큰화) 이슈 · BPE subword 토크나이징 · Heaps' law와 Zipf's law</div>
-          <div class="card-m">2026.09.17, 09.22 · 슬라이드 Regex Tokenization</div>
-        </a>
-    <a class="card" href="ngram.html">
-          <span class="go">→</span>
-          <div class="card-t">N-gram 언어 모델</div>
-          <div class="card-d">다음 단어 확률과 chain rule(연쇄 규칙) · MLE(최대 우도 추정)와 smoothing(스무딩) (Laplace, backoff, interpolation) · perplexity(퍼플렉시티) · train/dev/test</div>
-          <div class="card-m">2026.09.22, 09.29, 10.01 · 슬라이드 N-gram LM</div>
-        </a>
-    <a class="card" href="naive-bayes.html">
-          <span class="go">→</span>
-          <div class="card-t">Naive Bayes 텍스트 분류</div>
-          <div class="card-d">text classification(텍스트 분류) 과제 · Naive Bayes(나이브 베이즈) 분류기와 학습 · sentiment analysis(감성 분석) · 평가 지표(accuracy(정확도), precision/recall(정밀/재현), F1) · logistic regression(로지스틱 회귀) 맛보기</div>
-          <div class="card-m">2026.09.29, 10.01, 10.06 · 슬라이드 Naive Bayes</div>
-        </a>
-    <a class="card" href="pages/nn1.html">
-          <span class="go">→</span>
-          <div class="card-t">Neural Networks 1 (10/6)</div>
-          <div class="card-d">neuron(뉴런) · activation function(활성화 함수) · loss(손실) · gradient descent(경사 하강법) · chain rule(연쇄 법칙) · backpropagation(역전파) · 연습문제 5개</div>
-          <div class="card-m">2026-10-06 · 슬라이드 p.1–67</div>
-        </a>
-    <a class="card" href="pages/nn2.html">
-          <span class="go">→</span>
-          <div class="card-t">Neural Networks 2 (10/8)</div>
-          <div class="card-d">learning rate(학습률)와 수렴 · GD / SGD / mini-batch(미니배치) · sigmoid(시그모이드)와 NLL(음성 로그 우도) · softmax(소프트맥스) · overfitting(과적합)과 regularization(정규화)</div>
-          <div class="card-m">2026-10-08 · 슬라이드 p.1–101</div>
-        </a>
-    <a class="card" href="pages/embeddings.html">
-          <span class="go">→</span>
-          <div class="card-t">Vector Semantics and Embeddings (10/15)</div>
-          <div class="card-d">word meaning(단어 의미) · one-hot vector(원-핫 벡터) · 분포 가설 · cosine similarity(코사인 유사도) · tf-idf · PMI · Word2Vec</div>
-          <div class="card-m">2026-10-15 · 슬라이드 p.1–70, 79, 94–96</div>
-        </a>
-    <a class="card" href="pages/proposals.html">
-          <span class="go">→</span>
-          <div class="card-t">프로젝트 제안 발표 (10/20)</div>
-          <div class="card-d">LLM(대규모 언어 모델) 수학 문제 풀이 · Induction Head(인덕션 헤드) recovery(복구) · Attention Head(어텐션 헤드) pruning(가지치기) · 세 발표 공통점 정리</div>
-          <div class="card-m">2026-10-20 (화) · 수업 녹취 기반 요약</div>
-        </a>
+    <h2>엑셀 · 시험 대비</h2>
+    <a class="card" href="excel.html">
+      <span class="go">→</span>
+      <div class="card-t">엑셀 사용법 (퀴즈 대비)</div>
+      <div class="card-d">수업 파일별 정리 · 기본 조작 · 피벗 · 날짜/조회/요약 함수 · 차트와 추세선 · 목표값 찾기 · 해 찾기 · 메뉴 한글 이름</div>
+      <div class="card-m">연습 파일(마케팅_엑셀_연습.xlsx) 다운로드 포함</div>
+    </a>
+    <a class="card" href="course-info.html">
+      <span class="go">→</span>
+      <div class="card-t">수업 운영</div>
+      <div class="card-d">평가 비중 · 퀴즈 규칙 · 숙제 형식 · 교수님이 반복한 말</div>
+      <div class="card-m">출석·과제 규칙 정리</div>
+    </a>
+    <a class="card" href="quiz.html">
+      <span class="go">→</span>
+      <div class="card-t">마케팅 특강 Quiz 대비</div>
+      <div class="card-d">11/4 (수) 12:30 · 예고된 범위: 면도기 가격과 날 가격 두 개 구하기, 변수 셀 2개</div>
+      <div class="card-m">예고 범위 정리</div>
+    </a>
   </section>
+
   <section>
-    <h2>팀 프로젝트</h2>
-    <a class="card" href="pages/team7.html">
-          <span class="go">→</span>
-          <div class="card-t">Team 7 Proposal — 언어별 quantization(양자화) 민감도</div>
-          <div class="card-d">Token-Length Hypothesis(토큰 길이 가설) · multilingual quantization(다국어 양자화) 선행 연구 · research question(연구 질문) · 실험 설계</div>
-          <div class="card-m">Team 7 · 10장 · 발표 자료 학습 노트</div>
-        </a>
+    <h2>프로젝트 · 과제</h2>
+    <a class="card" href="team-project.html">
+      <span class="go">→</span>
+      <div class="card-t">팀 프로젝트 (Group 3)</div>
+      <div class="card-d">주제: AI 구독 vs 사용량 과금 · 주제 후보 v1/v2 분석 · 교수님 의도 분석 · 실행 계획 · 계획서 초안</div>
+      <div class="card-m">팀원 이름은 지운 버전</div>
+    </a>
+    <a class="card" href="hw3.html">
+      <span class="go">→</span>
+      <div class="card-t">마케팅전략 HW3</div>
+      <div class="card-d">제출 완료 (10/21) · 풀이 PDF와 Solver 실행 파일</div>
+      <div class="card-m">파일 2개</div>
+    </a>
   </section>
-  <div class="foot">원본: Notion 아카이브 · 강의: CSED490E 자연어처리 (POSTECH).</div>
+
+  <div class="foot">Notion 아카이브에서 변환 · 2026.10.21</div>
 </div>
 </body>
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>가격 묶음 (5강) · 데이터와 경제학 마케팅</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="content-style.css">
+<link rel="stylesheet" href="study-note.css">
+</head>
+<body>
+<article class="paper">
+  <div class="phead">
+    <a class="to-home" href="index.html">&larr; 목차</a>
+    <span class="phead-c">데이터와 경제학 마케팅</span>
+    <span class="phead-r">CMEF499D · 2026 가을</span>
+  </div>
+  <h1 class="pagetitle">가격 묶음 (5강)</h1>
+  <p class="psub">소비자잉여 · 순수/혼합 묶음 · Verizon 모형</p>
+  <div class="body notes">
+<details><summary>핵심 개념</summary>
+<div class="def"><ul><li><span class="k-blue">선형 가격 vs 비선형 가격</span>: 4강은 개당 같은 가격(선형), 5강은 총액이 개수에 비례하지 않는 가격(비선형), 그 대표가 <span class="k-blue">묶음 가격</span></li></ul></div>
+<div class="def"><ul><li><span class="k-blue">묶음</span>: 여러 상품을 한 가격에 팔아서, 따로라면 안 샀을 것까지 사게 함</li></ul></div>
+<ul><li><span class="k-blue">소비자잉여(CS)</span> = 가치(WTP) − 가격 → 손님은 잉여가 <span class="k-blue">가장 큰</span> 상품을 사고, 다 음수면 안 삼 (Verizon 모형의 규칙)</li><li>단일 가격의 한계: WTP가 높은 사람의 잉여를 못 가져감, 낮추면 이미 살 사람에게도 싸게 팔게 됨</li></ul>
+<div class="def"><ul><li><span class="k-blue">순수 묶음</span>: 묶음으로만 판매 / <span class="k-blue">혼합 묶음</span>: 단품과 묶음을 둘 다 판매 (Verizon 7개 상품) / <span class="k-blue">크기별 가격</span>: 몇 개를 고르든 개수로 가격 (넷플릭스 요금제)</li></ul></div>
+<ul><li>묶음이 효과 있는 조건: 사람마다 WTP가 다르고, WTP가 <span class="k-blue">음의 상관</span>(한 사람은 A를, 다른 사람은 B를 높게 봄)일 때, 한계비용이 낮을 때 / 양의 상관이면 묶어도 이득 없음</li><li>모형에 IF·MAX·MATCH가 들어가서 함수가 꺾임 → 매끄러운 함수용 GRG는 안 되고 <span class="k-blue">Evolutionary</span>(무작위 탐색)</li></ul>
+<div class="def"><ul><li><span class="k-blue">벌점</span>: 현실에서 이상한 해(큰 묶음이 단품보다 쌀)를 목표에서 깎아 막는 방법, 제약으로 넣는 것과 비슷한 역할</li></ul></div>
+</details>
+<details><summary>교수님 설명</summary>
+<ul><li>예: 세트 메뉴, 통신 결합, 데스크톱+모니터, MS Office (따로는 안 살 Access를 같이 사게)</li><li>수업에서 물병 경매: 가격을 내리며 손 드는 사람 수를 셈 → 그게 수요곡선, WTP − 가격 = 소비자잉여</li></ul>
+<figure><img src="img/L5_p6.webp" alt="5강 p6 단일 가격 vs 5회권" loading="lazy"><figcaption>5강 p6 단일 가격 vs 5회권</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 놀이기구 1회 가격 vs 5회권, 손님 한 명에게서 버는 돈. 1회 $10이면 $10, $8이면 $16, <strong>$6이면 3번 타서 $18 (단일 가격 중 최고)</strong>, $4이면 $16, $2이면 $10. 5회권 $30이면 $30 → 최고 단일 가격보다 67% 많음, 손님의 WTP 전체 $30을 다 가져가기 때문.</p>
+<ul><li>"한 가격만 매기면 WTP가 더 높은 사람의 잉여를 못 가져감" → 놀이공원 패스, 디즈니 파크 호퍼</li></ul>
+<figure><img src="img/L5_p8.webp" alt="5강 p8 순수 묶음" loading="lazy"><figcaption>5강 p8 순수 묶음</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 순수 묶음 예 (교재 표 5-1). WTP: 손님1 컴퓨터 $1,000, 모니터 $500 / 손님2 컴퓨터 $500, 모니터 $1,000 → 둘 다 묶음 가치 $1,500. 따로 $1,000씩 팔면 각자 하나만 사서 $2,000, 묶음 $1,500이면 둘 다 사서 <span class="k-blue">$3,000</span>. WTP가 엇갈려서(음의 상관) 통함, 원가는 0으로 가정.</p>
+<ul><li>컴퓨터·모니터 (WTP가 엇갈림): 따로 $2,000, 묶음 $1,500이면 $3,000</li></ul>
+<figure><img src="img/L5_p10.webp" alt="5강 p10 Erin과 Jake" loading="lazy"><figcaption>5강 p10 Erin과 Jake</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: Erin과 Jake. WTP: Erin 애피타이저 $8, 메인 $17 / Jake 애피타이저 $2, 메인 $25. 가격별 매출: ($8, $25) Erin은 애피타이저, Jake는 메인 → $33 / ($2, $17) 둘 다 둘 다 삼 → $38 / ($8, $17) Erin은 둘 다, Jake는 메인 → $42 / <span class="k-blue">묶음 $25</span> 둘 다 묶음 → <span class="k-blue">$50</span>. 묶음은 WTP 차이를 이용해서 $42를 $50으로 만듦.</p>
+<ul><li>Erin·Jake: 묶음 $25 → $50, "손님은 안 샀을 걸 사서 좋고, 가게는 더 벎"</li><li>학생 질문: 손님이 많으면 WTP를 어떻게 아나? → 시장 조사, 쿠폰·가격 변경으로 반응을 봄</li><li>크기별 가격(넷플릭스 요금제): 단계 사이 가격 차이로 위 단계를 고르게 유도, 한계비용이 낮아서 가능</li></ul>
+</details>
+<details><summary>Verizon 모형 (수업 파일 그대로)</summary>
+<figure><img src="img/L5_p20.webp" alt="5강 p20 소비자잉여 설정" loading="lazy"><figcaption>5강 p20 소비자잉여 설정</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 매출 모형 1~3단계. ① 7개 상품 시작 가격 입력 (아무 값, 해 찾기가 바꿈) ② 6행에 손님1의 상품별 잉여 = 가치 − 가격 (예: 인터넷+TV <code>=A6+B6-G$4</code>), 77명 끝까지 복사 ③ K열 <code>=MAX(D6:J6)</code> = 가장 큰 잉여. G$4의 $는 가격 행을 고정해서 아래로 복사해도 안 밀리게 하는 것. (교재는 가격이 4행, 수업 파일은 3행)</p>
+<ul><li>77명 × 인터넷·TV·휴대폰 월 WTP, 7개 상품 (1 인터넷, 2 TV, 3 휴대폰, 4 인터넷+TV, 5 인터넷+휴대폰, 6 TV+휴대폰, 7 셋 다)</li><li>손님은 잉여(WTP − 가격)가 가장 큰 상품을 삼, 다 음수면 안 삼</li></ul>
+<figure><img src="img/xl_verizon_model.webp" alt="Verizon 시트 2\~8행과 수식" loading="lazy"><figcaption>Verizon 시트 2\~8행과 수식</figcaption></figure>
+<ul><li>D2:J2 = 상품 번호, D3:J3 = 가격 (처음엔 아무 값, <span class="k-blue">이게 결정변수</span>)</li><li>잉여: <code>=A6-$D$3</code>, <code>=(A6+B6)-$G$3</code>, <code>=SUM(A6:C6)-$J$3</code> …</li><li>최대 잉여: <code>=MAX(D6:J6)</code></li><li>산 상품 번호: <code>=IF(K6&gt;0,MATCH(K6,D6:J6,0),0)</code> → 잉여가 양수면 몇 번째인지, 아니면 0</li><li>매출: <code>=IF(L6=0,0,HLOOKUP(L6,$D$2:$J$3,2,FALSE))</code> → 2행 번호에서 찾아 3행 가격</li><li>몇 명이 샀나: <code>=COUNTIF($L$6:$L$82,O10)</code></li></ul>
+<div class="warn"><ul><li><span class="k-red">교수님 실수</span>: 수식을 77명 끝까지 안 채워서 매출이 달라짐 → "오른쪽 아래 더블클릭해서 끝까지 채웠는지 먼저 확인"</li></ul></div>
+<figure><img src="img/L5_p21.webp" alt="5강 p21 고객별 구매" loading="lazy"><figcaption>5강 p21 고객별 구매</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 매출 모형 4~6단계 (교재 행 번호). ④ L6 <code>=IF(K6&lt;0,0,MATCH(K6,D6:J6,0))</code> = 최대 잉여가 음수면 0 (안 삼), 아니면 그 잉여가 몇 번째 상품인지 ⑤ M6 <code>=IF(L6=0,0,HLOOKUP(L6,$D$3:$J$4,2))</code> = 산 상품의 가격 = 이 손님 매출 ⑥ <code>=SUM(M6:M82)</code> = 총매출 = 해 찾기 목표 셀.</p>
+<ul><li>수업에서 학생들 매출이 달랐던 이유: <span class="k-red">MATCH 마지막 0을 빼먹음</span> → 비슷한 값을 골라버림</li><li>동점이면 엑셀이 아무거나 고름 → 총매출만 보니까 상관없음 (교수님)</li><li>잉여 = 0일 때 살지 말지는 마음대로 정해도 됨 (교수님)</li><li>한계비용이 상품마다 다르면 더 현실적이지만 지금은 단순하게</li></ul>
+</details>
+<details><summary>해 찾기와 벌점</summary>
+<figure><img src="img/L5_p22.webp" alt="5강 p22 Evolutionary를 쓰는 이유" loading="lazy"><figcaption>5강 p22 Evolutionary를 쓰는 이유</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 해법 세 가지. <span class="k-blue">Simplex LP</span> = 선형 모형 (변수 × 상수의 합) / <span class="k-blue">GRG 비선형</span> = 매끄러운 비선형 (변수끼리 곱하기·나누기·거듭제곱, 4강 수요곡선 가격) / <span class="k-blue">Evolutionary</span> = 꺾이는 모형 (IF, MAX, MIN, ABS, COUNTIF, SUMIF가 들어감). 묶음 모형은 손님이 상품을 바꾸는 순간 매출이 뚝 뛰어서 GRG가 따라갈 기울기가 없음.</p>
+<ul><li>왜 Evolutionary: IF 조건 때문에 함수가 꺾여서 비선형 알고리즘이 안 먹힘</li></ul>
+<figure><img src="img/L5_p23.webp" alt="5강 p23 Evolutionary 설정" loading="lazy"><figcaption>5강 p23 Evolutionary 설정</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: Evolutionary 설정 (교재). 목표 총매출 최대 / 변수 7개 상품 가격 / 제약 0 이상 100 이하 / 방법 Evolutionary. 옵션 탭: 최대 시간 3,600초, 돌연변이율 0.5, 모집단 100, 개선 없는 최대 시간 300초, 수렴 0.0001. 변수 범위 말고 다른 제약은 넣지 말고 목표에 벌점으로. 가격이 범위 끝에 붙으면 범위를 늘림, Esc로 중단.</p>
+<ul><li>목표 M3 최대 / 변수 D3:J3 (여러 칸) / 제약 D3:J3 ≤ 100, ≥ 0 / <span class="k-blue">Evolutionary</span></li></ul>
+<figure><img src="img/L5_p25.webp" alt="5강 p25 첫 결과의 가격 역전" loading="lazy"><figcaption>5강 p25 첫 결과의 가격 역전</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 첫 해 찾기 결과 (교재 그림 5-5, 매출 $3,413.70). 인터넷 단품 $74.35인데 인터넷+TV는 $69.99 → 더 많이 주는 게 $4.36 더 쌈 (가격 역전). 해 찾기가 이런 이유: 이 가격에선 아무도 인터넷 단품을 안 사서 높게 매겨도 매출에 상관없음. 하지만 시장에 내면 손님이 이상하게 봄.</p>
+<ul><li>첫 결과의 문제: 큰 묶음이 단품보다 싼 경우 → 시장에 내놓으면 이상함</li></ul>
+<figure><img src="img/L5_p26.webp" alt="5강 p26 벌점으로 역전 제거" loading="lazy"><figcaption>5강 p26 벌점으로 역전 제거</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 벌점으로 역전 없애기 (제약을 목표 셀에 넣는 방법). ① P70:P81에 작은 상품 − 큰 상품 가격 12쌍 (단품 vs 그걸 포함한 묶음, 2개 묶음 vs 3개 묶음) ② 예: 인터넷 − 인터넷+TV = $4.36 ③ Q열은 양수(역전)면 그대로, 아니면 0, Q82에 합 ④ 새 목표 <code>=SUM(M6:M82)-500*Q82</code> = 역전 1달러당 $500 감점. 벌점이 너무 크면(100만) 잘 안 풀리고 너무 작으면 역전이 남음. 해 찾기 설정은 그대로.</p>
+<ul><li>벌점: 작은 상품 − 큰 상품 12쌍, 양수(역전)일 때만 벌점으로 남김</li><li>새 목표: <code>=SUM(M6:M82)-500*Q82</code> → 역전 $1당 $500 감점</li></ul>
+<figure><img src="img/xl_verizon_penalty.webp" alt="벌점 블록 O69:Q82" loading="lazy"><figcaption>벌점 블록 O69:Q82</figcaption></figure>
+<ul><li>P70 <code>=E3-G3</code> (TV − 인터넷+TV) …, Q70 <code>=IF(P70&lt;0,0,P70)</code>, 합계 Q82 <code>=SUM(Q70:Q81)</code></li><li>벌점 크기는 시행착오 ("1,000이든 10이든 해보고 결정")</li><li>학생 질문: 제약으로 넣으면? → 넣을 수는 있음</li></ul>
+<figure><img src="img/L5_p27.webp" alt="5강 p27 최종 묶음 가격" loading="lazy"><figcaption>5강 p27 최종 묶음 가격</figcaption></figure>
+<p class="slidenote"><span class="k-blue">슬라이드</span>: 최종 가격 (교재 그림 5-7, 매출 $3,413.90, 역전 없음). 인터넷 $47.41, TV $35.00, 휴대폰 $67.87, 아무 두 개 $70.00, 셋 다 $89.95 → 셋째 서비스는 $19.95만 더 내면 됨, 단품을 비싸게 해서 묶음으로 유도. 역전을 고쳐도 매출은 거의 그대로 (역전된 상품은 어차피 아무도 안 샀음). 모든 조합에 가격을 매기면 따로·혼합·순수 묶음 중 뭐가 나은지 최적화가 정해 줌.</p>
+<ul><li>수업 파일 결과: 인터넷 $57.61, TV $34.99, 휴대폰 $48.62, 두 개 묶음 $69.6~69.9, 셋 다 $83.89 → 매출 <span class="k-blue">$3,390.97</span>, 벌점 0</li><li>구매: 안 삼 25, TV 17, 인터넷+TV 7, 인터넷+휴대폰 2, TV+휴대폰 1, 셋 다 25</li><li>수업 시연 결과는 벌점 넣고 약 $3,309, 안 삼 22명 (위 숫자는 수업 파일에 저장된 값)</li><li>숫자는 사람마다 조금 달라도 됨, 함수가 맞으면 OK</li></ul>
+</details>
+  </div>
+</article>
+</body>
+</html>
