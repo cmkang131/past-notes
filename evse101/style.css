@@ -1,0 +1,144 @@
+:root{--ink:#1a1a1a;--red:#b03a32;--gray:#666;--blue:#2456c4;--rule:#1a1a1a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif;background:#fff;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.paper{max-width:780px;margin:0 auto;background:#fff;padding:36px 40px 64px}
+.course{font-size:13px;color:var(--gray);letter-spacing:.08em;font-weight:700}
+h1{font-size:30px;font-weight:700;color:var(--ink);line-height:1.3;margin:6px 0 4px}
+.sub{font-size:15.5px;color:#444;margin-top:10px}
+section{margin-top:34px;border-top:1px solid var(--rule);padding-top:20px}
+h2{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.go{float:right;color:var(--gray);font-size:18px}
+a.card{display:block;text-decoration:none;color:var(--ink);border:1.5px solid var(--rule);padding:16px 22px;margin-top:14px;cursor:pointer;background:#fff}
+a.card:hover{border-color:var(--blue)}
+.card-t{font-weight:700;font-size:16.5px}
+a.card:hover .card-t{color:var(--blue)}
+.card-d{font-size:14.5px;color:#444;margin-top:6px;line-height:1.55}
+.card-m{font-size:13px;color:var(--gray);margin-top:8px}
+div.card-off{border:1.5px solid var(--rule);padding:16px 22px;margin-top:14px;color:var(--gray)}
+.card-off .card-t{color:var(--gray)}
+.foot{margin-top:40px;font-size:13px;color:var(--gray)}
+@media (max-width:760px){
+  .paper{padding:24px 18px 44px}
+  h1{font-size:24px}
+}
+
+
+
+
+
+
+:root{--ink:#1a1a1a;--red:#b03a32;--gray:#666;--blue:#2456c4;--rule:#1a1a1a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif;background:#fff;color:var(--ink);-webkit-tap-highlight-color:transparent}
+svg{max-width:100%}
+.mjx{display:inline!important}.mjx svg{display:inline-block!important;vertical-align:middle;overflow:visible}
+.mjx-display{margin:.3em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.mjx-display svg{display:block!important;margin:0 auto}
+.paper{max-width:780px;margin:0 auto;background:#fff;padding:28px 40px 56px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px;color:var(--gray);
+  padding-bottom:10px;margin-bottom:0}
+.phead-c{color:var(--ink);font-weight:700;font-size:13.5px;text-align:center}
+.phead-r{font-size:12.5px;white-space:nowrap}
+a.to-home{color:var(--ink);text-decoration:none;cursor:pointer;border-bottom:1px solid #999;white-space:nowrap;font-size:13px}
+a.to-home:hover{color:var(--blue);border-color:var(--blue)}
+.body{font-size:16.5px;line-height:1.7}
+.body p{margin:.3em 0}
+.body ol{margin:.2em 0;padding-left:1.8em;list-style:lower-alpha outside}
+.body ol li{margin:.16em 0;padding-left:.2em;display:list-item}
+section.part{margin-top:0;padding:22px 0;border-top:1px solid var(--rule)}
+article.prob-page > section.part:first-child{border-top:none;padding-top:0}
+.problem{border:1.5px solid var(--rule);padding:16px 22px;background:#fff}
+.prob-no{font-family:'Nanum Pen','Caveat',cursive;font-weight:700;font-size:26px;line-height:1.4;color:var(--ink);margin-bottom:8px}
+.concept-title{font-weight:700;font-size:16.5px;margin-bottom:8px;color:var(--blue)}
+.concept-title.blue{color:var(--blue)}
+.ref{font-size:12.5px;color:var(--gray);margin:-2px 0 10px}
+.concept ul{margin-left:.4em;list-style:none}
+.concept li{margin:.14em 0;font-size:15.5px;padding-left:1.1em;position:relative}
+.concept li::before{content:"–";position:absolute;left:.2em;color:#555}
+.sol-tag{display:inline-block;font-weight:700;font-size:16.5px;color:var(--ink);margin-bottom:8px}
+.subpart{border-top:1px solid #bbb;padding-top:12px;margin-top:14px}
+.subpart.first{border-top:none;margin-top:0;padding-top:0}
+.solution span.part{font-weight:700;color:var(--ink);margin-right:3px}
+.figwrap{text-align:center;margin:10px 0}
+.figwrap svg{max-width:min(600px,92%);height:auto}
+.figcap{font-size:13.5px;color:#555;text-align:center;margin-top:12px}
+.takeaway{margin-top:0;font-size:16px;border:1.5px solid var(--rule);padding:12px 18px}
+.body b{color:var(--red)}
+.pnav{display:flex;justify-content:space-between;align-items:center;margin-top:0;padding:14px 0 0;border-top:1px solid var(--rule);font-size:13px}
+.pnav a{color:var(--ink);text-decoration:none;cursor:pointer;border-bottom:1px solid #999}
+.pnav a:hover{color:var(--blue);border-color:var(--blue)}
+/* home */
+.t-course{font-size:13px;color:var(--gray);letter-spacing:.08em;font-weight:700}
+h1.t-title{font-size:26px;line-height:1.3;color:var(--ink);font-weight:700;margin:6px 0 4px}
+.t-sub{font-size:15.5px;color:#444;margin-top:10px}
+.t-meta{margin-top:6px;font-size:13px;color:var(--gray)}
+.idx{margin-top:22px;list-style:none;border-top:1px solid var(--rule)}
+.idx-row{display:flex;align-items:baseline;gap:14px;padding:11px 4px;border-bottom:1px solid #ccc;text-decoration:none;color:var(--ink);cursor:pointer}
+.idx-row:hover .idx-no{color:var(--blue)}
+.idx-no{font-weight:700;font-size:15.5px;white-space:nowrap}
+.idx-title{color:#444;font-size:14.5px}
+.idx-num{margin-left:auto;color:var(--gray);font-size:12.5px;white-space:nowrap}
+.back-site{margin-top:28px;font-size:13px;color:var(--gray)}
+.back-site a{color:var(--ink);border-bottom:1px solid #999;text-decoration:none}
+@media (max-width:760px){
+  .paper{padding:20px 18px 40px}
+  .body{font-size:15.5px}
+  .phead-r{display:none}
+  h1.t-title{font-size:22px}
+}
+@media print{
+  body{background:#fff}
+  .paper{max-width:none;margin:0;padding:10px 20px}
+  article.prob-page{page-break-before:always}
+  article.prob-page:first-of-type{page-break-before:avoid}
+  .pnav{display:none}
+  a{text-decoration:none;color:inherit}
+}
+
+/* ===== study-note layer (2026-10-21 user rule) =====
+   White page, Noto Sans KR (no handwriting font, no ruled paper).
+   Handwritten-notes FEEL via hierarchy/indent/color only.
+   Wrap note content in <div class="body notes">. */
+.notes h2{font-size:19px;font-weight:700;color:var(--ink);margin:28px 0 10px;padding-bottom:5px;border-bottom:1.5px solid var(--rule)}
+.notes h3{font-size:16.5px;font-weight:700;color:var(--ink);margin:20px 0 6px}
+.notes h4{font-size:15.5px;font-weight:700;color:#333;margin:14px 0 4px}
+.notes p{margin:.3em 0}
+/* level-nested bullets: • lv1, – lv2, · lv3 */
+.notes ul{list-style:none;margin:.25em 0;padding-left:0}
+.notes ul li{position:relative;padding-left:1.25em;margin:.2em 0;line-height:1.65}
+.notes ul li::before{content:"•";position:absolute;left:.3em;color:var(--ink)}
+.notes ul ul{margin:.12em 0;padding-left:1.15em}
+.notes ul ul li::before{content:"–";color:#555}
+.notes ul ul ul{padding-left:1.15em}
+.notes ul ul ul li::before{content:"·";color:#999}
+.notes ol{margin:.25em 0;padding-left:1.7em}
+.notes ol li{margin:.2em 0;line-height:1.65}
+.notes ol ol{list-style:lower-alpha}
+/* key term / definition -> blue */
+.k-blue{color:var(--blue);font-weight:700}
+/* warning / condition / must-remember -> red */
+.k-red{color:var(--red);font-weight:700}
+/* important phrase -> yellow highlighter */
+.hl{background:#fff1a8;padding:.02em .18em;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* boxed key formula */
+.fbox{border:1.5px solid var(--rule);padding:10px 16px;margin:12px 0;background:#fff}
+.fbox .mjx-display{margin:.15em 0}
+/* definition block (blue accent) */
+.def{border-left:3px solid var(--blue);padding:5px 0 5px 14px;margin:12px 0}
+/* warning/condition block (red accent) */
+.warn{border-left:3px solid var(--red);padding:5px 0 5px 14px;margin:12px 0}
+/* small gray source/ref line */
+.refline{font-size:12.5px;color:var(--gray);margin:2px 0 8px}
+
+/* ===== site additions ===== */
+.notes img{max-width:100%;height:auto}
+.figwrap{margin:10px 0}
+.figwrap img{max-width:min(640px,100%);height:auto}
+.cols{display:flex;gap:20px;margin:.4em 0;align-items:flex-start}
+.cols>.col{flex:1 1 0;min-width:0}
+.cols .figwrap img{max-width:100%}
+table.ntable{border-collapse:collapse;margin:12px 0;font-size:14.5px;width:100%}
+table.ntable th,table.ntable td{border:1px solid #bbb;padding:6px 10px;text-align:left;vertical-align:top;line-height:1.55}
+table.ntable th{background:#f6f6f6;font-weight:700}
+@media (max-width:760px){.cols{flex-direction:column}}

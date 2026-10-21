@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 09 · OOP 2 — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Lab 09 · OOP 2</h1>
+<div class="t-meta">실습 · Notion 아카이브</div>
+<div class="body notes">
+<details open><summary><span class="k-blue">Operator Overloading(연산자 오버로딩)</span></summary>
+<ul>
+<li><code>acc1 += 1000</code></li>
+<li>&gt; acc1 = acc1.<span class="k-blue">iadd</span>(1000)</li>
+<li>이런 식으로 작동함</li>
+<ul>
+<li><u><span class="hl">return self</span></u></li>
+<li>를 이용해서 self를 반환해 줘야 함</li>
+</ul>
+</ul>
+<details open><summary>실습 1</summary>
+<pre><code class="lang-python">&#x27;응행 계좌에서 Operator Overloading&#x27;
+
+class BankAccount():
+    def __init__(self, name=None, balance=0):
+        self.name = name
+        self.balance = balance
+
+    def __add__(self, amount):
+        self.balance += amount
+        return self
+
+    def __iadd__(self, amount):
+        self.balance += amount
+        return self
+
+    def __sub__(self, amount):
+        if self.balance &gt;= amount:
+            self.balance -= amount
+            return self
+        else:
+            print(&#x27;잔액 부족&#x27;)
+            return self
+
+    def __isub__(self, amount):
+        if self.balance &gt;= amount:
+            self.balance -= amount
+            return self
+        else:
+            print(&#x27;잔액 부족&#x27;)
+            return self
+
+    def __str__(self):
+        return f&#x27;name: {self.name}, balance: {self.balance}&#x27;
+
+if __name__ == &quot;__main__&quot;:
+    acc1 = BankAccount(&quot;홍길동&quot;, 1000)
+    print(acc1)
+    acc1 + 1000
+    print(acc1)
+    acc1 += 1000
+    print(acc1)
+    acc1 - 1000
+    print(acc1)
+    acc1 -= 4000
+    print(acc1)
+    acc1 -= 1000
+    print(acc1)</code></pre>
+</details>
+</details>
+<details open><summary><span class="k-blue">Inheritance(상속)</span></summary>
+<pre><code class="lang-python">class DerivedClassName(BaseClassName):
+&lt;statement-1&gt;
+...
+&lt;statement-N&gt;</code></pre>
+<ul>
+<li>⇒ 기존 <span class="k-blue">Class(클래스)</span>의 속성을 물려 받아 새로운 클래스를 만드는 것</li>
+<ul>
+<li>모든 변수/ <span class="k-blue">Method(메서드)</span>를 가짐</li>
+<li>다중 클래스를 상송받을 수 있음</li>
+</ul>
+</ul>
+<pre><code class="lang-python">class A:
+    a = 1
+    def print_a(self):
+        print(&quot;A Class&quot;)
+
+class B:
+    b = 1
+    def print_b(self):
+        print(&quot;B Class&quot;)
+
+class C(A):
+    c = 1
+    def print_c(self):
+        print(&quot;C Class&quot;)
+
+class D(C,B):
+    d = 1
+    def print_d(self):
+        print(&quot;D Class&quot;)
+
+c = C()
+d = D()
+
+&#x27;mro : 메서드 해석 순서 반환 함수&#x27;
+
+print(D.mro())    
+d.print_a()
+d.print_b()
+d.print_c()
+d.print_d()</code></pre>
+<ul>
+<li>[&lt;class &#x27;<span class="k-blue">main</span>.D&#x27;&gt;, &lt;class &#x27;<span class="k-blue">main</span>.C&#x27;&gt;, &lt;class &#x27;<span class="k-blue">main</span>.A&#x27;&gt;, &lt;class &#x27;<span class="k-blue">main</span>.B&#x27;&gt;, &lt;class &#x27;<span class="k-blue">Object(객체)</span>&#x27;&gt;]<br>A Class<br>B Class<br>C Class<br>D Class</li>
+</ul>
+<details open><summary>Method Overriding</summary>
+<ul>
+<li>기존 클래스 메서드를 상속 클래스에서 재정의 하는 것</li>
+<li><u><span class="hl">기존 클래스의 메서드를 사용하고자 하는 경우 super() 사용</span></u></li>
+</ul>
+<pre><code class="lang-python">class A:
+    def __init__(self):
+        print(&quot;this is [A] class and [__init__] function&quot;)
+
+class B(A):
+    def __init__(self):
+        super().__init__()
+        print(&quot;this is [b] class and [__init__] function&quot;)
+
+a = A()
+b = B()</code></pre>
+<ul>
+<li>this is [A] class and [<span class="k-blue">init</span>] <span class="k-blue">Function(함수)</span><br>this is [A] class and [<span class="k-blue">init</span>] function<br>this is [b] class and [<span class="k-blue">init</span>] function</li>
+</ul>
+</details>
+</details>
+<details open><summary>실습 1 상속 및 오버라이딩 [사람 ⇒ 학생]</summary>
+<ul>
+<li>사람 → 학생 + sid(학번) 기능</li>
+</ul>
+<pre><code class="lang-python">class Person:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print(f&#x27;안녕하세요, 저는 {self.name}입니다.&#x27;)
+
+class Student(Person):
+
+    def __init__(self, name, sid):
+        super().__init__(name)   # 필요한 변수 입력해줘야 함
+        self.sid = sid
+    
+    def introduce(self):
+        super().introduce()
+        print(f&#x27;학번: {self.sid}&#x27;)
+
+
+# 테스트 코드
+p = Person(&quot;고길동&quot;)
+p.introduce()
+print()
+s = Student(&quot;박희동&quot;, 20250001)
+s.introduce()
+# 실행 결과
+&#x27;안녕하세요, 저는 고길동입니다.&#x27;
+&#x27;안녕하세요, 저는 박희동입니다.&#x27;
+&#x27;학번: 20250001&#x27;</code></pre>
+</details>
+<details open><summary>실습 2 상속 및 오버라이딩 [사람 ⇒ 교수, 학생]</summary>
+<ul>
+<li>지도교수 - 지도학생 introduce되는 기능 추가</li>
+</ul>
+<pre><code class="lang-python">class Person:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print(f&#x27;안녕하세요, 저는 {self.name}입니다.&#x27;)
+
+class Student(Person):
+
+    def __init__(self, name, sid):
+        super().__init__(name)   # 필요한 변수 입력해줘야 함
+        self.sid = sid
+        self.advisor = None 
+    
+    def introduce(self):
+        super().introduce()
+        print(f&#x27;학번: {self.sid}&#x27;)
+        if self.advisor:
+            print(f&#x27;지도교수: {self.advisor}&#x27;)
+
+class Professor(Person):
+
+    def __init__(self,name):
+        super().__init__(name)
+        self.students = []
+
+    def add_student(self, stu):
+        self.students.append(stu)
+        stu.advisor = self.name
+
+    def introduce(self):
+        super().introduce()
+        if self.students:
+            names = &#x27;,&#x27;.join(stu.name for stu in self.students)
+            print(f&#x27;지도학생: {names}&#x27;)
+        else:
+            print(f&#x27;지도학생: 없음&#x27;)
+
+# 테스트 코드
+p1 = Professor(&#x27;박교수&#x27;)
+p2 = Professor(&#x27;홍교수&#x27;)
+s1 = Student(&#x27;김학생&#x27;, 20191234)
+s2 = Student(&#x27;이학생&#x27;, 20221234)
+p1.add_student(s1)
+p1.add_student(s2)
+s1.introduce()
+s2.introduce()
+p1.introduce()
+p2.introduce()</code></pre>
+<pre><code class="lang-python">안녕하세요, 저는 김학생입니다.
+학번: 20191234
+지도교수: 박교수
+안녕하세요, 저는 이학생입니다.
+학번: 20221234
+지도교수: 박교수
+안녕하세요, 저는 박교수입니다.
+지도학생: 김학생,이학생
+안녕하세요, 저는 홍교수입니다.
+지도학생: 없음</code></pre>
+</details>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>

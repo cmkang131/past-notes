@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 12 · Sort and Search(정렬과 탐색) — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Lecture 12 · Sort and Search(정렬과 탐색)</h1>
+<div class="t-meta">강의 · Notion 아카이브</div>
+<div class="body notes">
+<details open><summary><span class="k-blue">Sort(정렬)</span></summary>
+<ul>
+<li>입력된 데이터를 특정 기준에 따라 오름차순 정렬</li>
+</ul>
+<details open><summary><span class="k-blue">Selection Sort(선택 정렬)</span></summary>
+<ul>
+<li>최솟값을 찾아 맨 앞 요소와 교체</li>
+</ul>
+</details>
+<details open><summary><span class="k-blue">Insertion Sort(삽입 정렬)</span></summary>
+<ul>
+<li>왼쪽(정렬) 원소들에 오른쪽(비정렬) 요소들을 끼워넣음</li>
+<li>빠른 시간, 데이터 클 때 효율 X</li>
+</ul>
+</details>
+<details open><summary><span class="k-blue">Quick Sort(퀵 정렬)</span></summary>
+<ul>
+<li><span class="k-blue">Divide and Conquer(분할 정복)</span> 알고리즘의 하나</li>
+<li>기준값을 기준으로 큰 값과 작은 값으로 분할, 각각에 대해 <span class="k-blue">Recursion(재귀)</span></li>
+<li>대부분의 경우 가장 빠른 실행 시간을 가짐.</li>
+</ul>
+</details>
+<details open><summary><span class="k-blue">Merge Sort(병합 정렬)</span></summary>
+<ul>
+<li>분할 정복 알고리즘의 하나</li>
+<li>주어진 <span class="k-blue">Array(배열)</span>을  두 부분으로 나누어 각각을 정렬, 다시 병합</li>
+</ul>
+</details>
+<details open><summary><span class="k-blue">Tim Sort(팀 정렬)</span></summary>
+<ul>
+<li>파이썬 정렬 알고리즘 중 하나</li>
+<li>안정적이고 원소 수가 적을 때는 삽입 정렬, 일부분은 삽입정렬, 일부분은 병합정렬을 사용</li>
+<li>거의 정렬된 배열 빠르게 처리</li>
+<li>작은 부분 배열에 대해 삽입 정렬 적용, 이 부분 배열을 병함</li>
+</ul>
+</details>
+<details open><summary><span class="k-blue">Bubble Sort(버블 정렬)</span></summary>
+<ul>
+<li>인접한 두 원소를 비교하여 정렬</li>
+<li>다른 알고리즘보다 비효율적, 큰 데이터 정렬에 비효율적</li>
+</ul>
+<details open><summary>Example Bubble Sort</summary>
+<pre><code class="lang-python">def bubble_sort(nlist):
+    for j in range(len(nlist)-1):
+        for i in range(len(nlist)-j-1):
+            if nlist[i] &gt; nlist[i+1]:
+                nlist[i], nlist[i+1] = nlist[i+1], nlist[i]
+        print(f&#x27;[step {j+1}]&#x27;, end = &#x27;&#x27;)
+        for k in range(len(nlist)):
+            print(&#x27;%3d &#x27;%(nlist[k]), end = &#x27;&#x27;)
+        print(&#x27;&#x27;)</code></pre>
+</details>
+<details open><summary>Example <span class="k-blue">Class(클래스)</span> Bubble Sort</summary>
+<pre><code class="lang-python">class BubbleSort:
+    def __init__(self, data):
+        self.data = data
+
+    def sort(self):
+        nlist = self.data
+        for j in range(len(nlist) - 1):
+            for i in range(len(nlist) - j - 1):
+                if nlist[i] &gt; nlist[i + 1]:
+                    nlist[i], nlist[i + 1] = nlist[i + 1], nlist[i]
+
+    def __str__(self):
+        return &quot;Sorted Data: &quot; + str(self.data)</code></pre>
+</details>
+</details>
+<details open><summary>내장 Sort</summary>
+<ul>
+<li>sort() ⇒ return X, <span class="k-blue">list(리스트)</span> 변화 O</li>
+<li>sorted() ⇒ return O, 리스트 변화 X</li>
+</ul>
+</details>
+</details>
+<details open><summary><span class="k-blue">Search(탐색)</span> (검색)</summary>
+<details open><summary>순차 검색(<span class="k-blue">Sequential Search(순차 탐색)</span>)</summary>
+<ul>
+<li>배열, 리스트 앞에서부터 하나씩 비교해가며 원하는 값을 찾음</li>
+<li>정렬 없이 사용가능, 배열 큰 경우 비효율</li>
+</ul>
+<details open><summary>Example (sequential search)</summary>
+<pre><code class="lang-python">def sequential_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+arr = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+result = sequential_search(arr, 12)
+print(result) # 찾는 숫자의 index 출력
+result = sequential_search(arr, 13)
+print(result) # 찾는 숫자가 없는 경우 -1 출력</code></pre>
+</details>
+</details>
+<details open><summary>이진 검색 (<span class="k-blue">Binary Search(이진 탐색)</span>)</summary>
+<ul>
+<li>정렬된 데이터로 검색</li>
+<li>중간 값을 검사하여 찾는 값이 중간 값보다 큰지 작은지 판단 → 재귀</li>
+</ul>
+<details open><summary>Example (binary search)</summary>
+<pre><code class="lang-python">def binary_search(arr, target):
+    left = 0 # 왼쪽 끝
+    right = len(arr) - 1 # 오른쪽 끝, 9
+
+    while left &lt;= right:
+        mid = (left + right) // 2 
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] &lt; target:
+            left = mid + 1 
+        else:
+            right = mid - 1 
+
+    return -1
+
+arr = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+result = binary_search(arr, 12)
+print(result) # 찾는 숫자의 인덱스 출력
+result = binary_search(arr, 13)
+print(result)</code></pre>
+</details>
+</details>
+</details>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>

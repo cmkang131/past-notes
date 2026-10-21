@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecture 11-2 · OOP(객체지향) 예제 02 — 프로그래밍과 문제해결 · CSED101</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="paper">
+<div class="phead"><a class="to-home" href="index.html">&larr; 목차</a><span class="phead-c">프로그래밍과 문제해결 · CSED101</span><span class="phead-r"></span></div>
+<h1 class="t-title">Lecture 11-2 · OOP(객체지향) 예제 02</h1>
+<div class="t-meta">강의 · Notion 아카이브</div>
+<div class="body notes">
+<details open><summary>과일가게 예제</summary>
+<pre><code class="lang-python">class Fruit:
+    def __init__(self, name, price):
+        self._name = name # 데이터 은닉
+        self._price = price
+    
+    def get_price(self):
+        return self._price
+
+    def __str__(self):
+        return f&quot;{self._name} (가격: {self._price}원)&quot;
+
+class Apple(Fruit):
+    def __init__(self, price):
+        super().__init__(&quot;사과&quot;, price)
+
+class Banana(Fruit):
+    def __init__(self, price):
+        super().__init__(&quot;바나나&quot;,price)
+
+class DiscountedFruit(Fruit):
+    def __init__(self, name, price, discount):
+        super().__init__(name, price)
+        self._discount = discount
+
+    def get_discounted_price(self):
+        return self._price * (1-self._discount)
+    
+    def __str__(self):
+        # 메서드 오버라이딩을 사용하여 __str__ 메서드를 재정의
+        discounted_price = self.get_discounted_price()
+        return f&quot;{self._name} (할인가: {discounted_price}원, 원래 가격: {self._price}원)&quot;
+
+class FruitShop:
+    def __init__(self):
+        self._fruits = {} # 데이터 은닉
+    
+    def add_fruit(self, fruit, quantity):
+        if fruit._name in self._fruits:
+            self._fruits[fruit._name][&#x27;quantity&#x27;] += quantity
+        else:
+            self._fruits[fruit._name] = {&#x27;fruit&#x27;: fruit, &#x27;quantity&#x27;: quantity}
+
+    def sell_fruit(self, fruit_name, quantity):
+        if fruit_name in self._fruits and self._fruits[fruit_name][&#x27;quantity&#x27;] &gt;= quantity:
+            self._fruits[fruit_name][&#x27;quantity&#x27;] -= quantity
+            print(f&#x27;{fruit_name} {quantity}개 판매 완료!&#x27;)
+        else:
+            print(&#x27;재고 부족&#x27;)
+
+    def show_inventory(self):
+        for fruit in self._fruits.values():
+            print(f&#x27;{fruit[&#x27;fruit&#x27;]} - 재고: {fruit[&#x27;quantity&#x27;]} 개&#x27;) # print안에 호출하면 str로 호출 됨 (__str__) 
+        
+    def apply_discount(self, fruit_name, discount):
+        if fruit_name in self._fruits:
+            original_fruit = self._fruits[fruit_name][&#x27;fruit&#x27;]
+            discounted_fruit = DiscountedFruit(original_fruit._name, original_fruit.get_price(), discount)
+                                            # original_fruit는 __str__로 들어온 게 아니라, 인스턴트로 들어온 거임
+            self._fruits[fruit_name][&#x27;fruit&#x27;] = discounted_fruit # 이것도 객체를 넣는 거
+            print(f&#x27;{fruit_name}에 {discount*100}% 할인이 적용되었습니다.&#x27;)
+
+# 과일가게 객체 생성
+shop = FruitShop()
+
+# 과일 객체 생성 및 재고 추가
+apple = Apple(1000)
+banana = Banana(500)
+shop.add_fruit(apple, 30)
+shop.add_fruit(banana, 20)
+
+# 특별 이벤트 - 사과 할인 적용
+shop.apply_discount(&quot;사과&quot;, 0.2)
+
+# 재고 확인
+shop.show_inventory()
+
+# 과일 판매
+shop.sell_fruit(&quot;사과&quot;, 5)
+shop.sell_fruit(&quot;바나나&quot;, 2)
+
+# 재고 확인
+shop.show_inventory()</code></pre>
+<pre><code class="lang-python">사과에 20.0% 할인이 적용되었습니다.
+사과 (할인가: 800.0원, 원래 가격: 1000원) - 재고: 30 개
+바나나 (가격: 500원) - 재고: 20 개
+사과 5개 판매 완료!
+바나나 2개 판매 완료!
+사과 (할인가: 800.0원, 원래 가격: 1000원) - 재고: 25 개
+바나나 (가격: 500원) - 재고: 18 개</code></pre>
+</details>
+<details open><summary>대학 예제</summary>
+<pre><code class="lang-python">class Desk:
+    def __init__(self, number):
+        self.number = number
+
+class Classroom:
+    def __init__(self,name):
+        self.name = name
+        self.desks = [Desk(i) for i in range(1,101)] # 강의실에 100개 책상
+
+class University:
+    def __init__(self,name):
+        self.name = name
+        self.classrooms = []
+
+    def add_classroom(self, classroom):
+        self.classrooms.append(classroom)
+
+# 객체 생성
+university = University(&quot;POSTECH&quot;)
+classroom1 = Classroom(&quot;501&quot;)
+classroom2 = Classroom(&quot;502&quot;)
+
+# 대학에 강의실 추가
+university.add_classroom(classroom1)
+university.add_classroom(classroom2)
+
+# 대학에 추가된 강의실 목록 출력
+print(f&quot;{university.name} has the following classrooms:&quot;)
+for classroom in university.classrooms:
+    print(classroom.name)
+
+# 각 강의실의 책상 수 출력
+for classroom in university.classrooms:
+    print(f&quot;Classroom {classroom.name} has {len(classroom.desks)} desks&quot;)</code></pre>
+<pre><code class="lang-python">POSTECH has the following classrooms:
+501
+502
+Classroom 501 has 100 desks
+Classroom 502 has 100 desks</code></pre>
+</details>
+</div>
+<div class="back-site"><a href="index.html">&larr; 프로그래밍과 문제해결 · CSED101 목차로</a></div>
+</div>
+</body>
+</html>
