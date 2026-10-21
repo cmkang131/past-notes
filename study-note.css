@@ -171,37 +171,21 @@ figcaption{font-size:13px;color:#666;margin-top:6px}
 .prob-q{font-size:16px;line-height:1.7}
 .prob-q p{margin:.25em 0}
 .prob-body{padding:0 18px 14px}
-.pd{margin:10px 0}
-.pd summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;
-  border-radius:10px;padding:10px 15px;font-weight:700;font-size:15px;
-  border:1px solid;transition:background .12s,border-color .12s;user-select:none}
+.pd{margin:4px 0}
+.pd summary{list-style:none;cursor:pointer;font-size:14.5px;color:var(--ink);user-select:none}
 .pd summary::-webkit-details-marker{display:none}
-.pd summary .ic{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;font-size:13.5px;flex:none}
-.pd summary .st{margin-left:auto;font-size:12px;font-weight:400;opacity:.75}
-.pd summary .st::after{content:"열기 ▸"}
-.pd[open] summary .st::after{content:"닫기 ▾"}
-.pd.hint summary{background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue-ink)}
-.pd.hint summary .ic{background:#fff;border:1px solid var(--blue-bd)}
-.pd.hint[open] summary{background:#dce8fb;border-color:#b9cff3;border-bottom-left-radius:0;border-bottom-right-radius:0}
-.pd.ans summary{background:var(--green-bg);border-color:var(--green-bd);color:var(--green-ink)}
-.pd.ans summary .ic{background:#fff;border:1px solid var(--green-bd)}
-.pd.ans[open] summary{background:#d9eedf;border-color:#b2d8bf;border-bottom-left-radius:0;border-bottom-right-radius:0}
-.pd .pd-body{border:1px solid;border-top:none;border-radius:0 0 10px 10px;padding:12px 16px;background:#fff}
-.pd.hint .pd-body{border-color:var(--blue-bd);background:#fbfdff}
-.pd.ans .pd-body{border-color:var(--green-bd);background:#fcfefc}
-/* 힌트가 이미 열려 있으면 정답 안의 개념 복사본은 숨김 — 개념은 한 번만 */
-.prob:has(.pd.hint[open]) .pd.ans .ans-concept{display:none}
-.ans-concept{border:1px solid var(--blue-bd);background:var(--blue-bg);border-radius:8px;padding:8px 14px;margin-bottom:10px}
-.ans-concept .lb{font-size:12px;font-weight:700;color:var(--blue-ink);letter-spacing:.05em;margin-bottom:3px}
+.pd summary::before{content:"▸";color:var(--gray);font-size:12px;margin-right:6px}
+.pd[open] summary::before{content:"▾"}
+.pd summary .tgl{text-decoration:underline;text-underline-offset:3px}
+.pd .pd-body{margin:6px 0 12px;padding:2px 0 2px 14px;border-left:1px solid #ddd}
+.pd .pd-body > :first-child{margin-top:2px}
+.ans-ref{font-size:13.5px;color:var(--gray);margin:2px 0 8px}
 ol.steps{counter-reset:step;list-style:none;padding-left:0;margin:8px 0}
-ol.steps > li{counter-increment:step;position:relative;padding:0 0 10px 42px;margin:0}
-ol.steps > li::before{content:counter(step);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;
-  background:var(--green-bg);border:1.5px solid var(--green-bd);color:var(--green-ink);
-  font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
-ol.steps > li:not(:last-child)::after{content:"";position:absolute;left:12.5px;top:30px;bottom:2px;width:1.5px;background:var(--green-bd)}
+ol.steps > li{counter-increment:step;position:relative;padding:0 0 10px 26px;margin:0}
+ol.steps > li::before{content:counter(step) ".";position:absolute;left:0;top:0;font-weight:700;font-size:15px;color:var(--ink)}
 ol.steps .st-t{font-weight:700;display:block;margin-bottom:1px}
 ol.steps .why{color:#555;font-size:14.5px}
-.ans-final{margin-top:12px;border:1.5px solid var(--rule);border-radius:8px;background:#fff;padding:10px 16px;text-align:center}
+.ans-final{margin-top:12px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:8px 4px;text-align:center}
 .ans-final .lb{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--gray)}
 .ans-final .val{font-size:17px;font-weight:700;margin-top:2px}
 .ans-final .val .hl{font-size:17px}
@@ -220,7 +204,7 @@ ol.steps .why{color:#555;font-size:14.5px}
   h1.pagetitle{font-size:22px}
   .cols2{grid-template-columns:1fr}
   .glance .g-list{grid-template-columns:1fr}
-  ol.steps > li{padding-left:38px}
+  ol.steps > li{padding-left:24px}
 }
 @media print{
   body{background:#fff}
