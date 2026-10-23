@@ -51,7 +51,7 @@ print(L)</code></pre>
 </ul>
 <details open><summary>실습 1</summary>
 <pre><code class="lang-python">&#x27;아래와 같이 주어진 2개의 리스트로 딕셔너리를 만들어 출력&#x27;
-L1 = [&#x27;one&#x27;,&#x27;two&#x27;,&#x27;tree&#x27;,&#x27;four&#x27;]
+L1 = [&#x27;one&#x27;,&#x27;two&#x27;,&#x27;three&#x27;,&#x27;four&#x27;]
 L2 = [1,2,3,4]
 
 result = dict(zip(L1,L2))
@@ -72,7 +72,7 @@ def count_even(*n):
     return cnt
 
 print(count_even(1,2,3,4,5,6,7,8,9))</code></pre>
-<details open><summary>실수 2</summary>
+<details open><summary>실습 2</summary>
 <pre><code class="lang-python">&#x27;1개 이상의 3차원 벡터들을 전달받아 벡터들의 합을 구하여 반환&#x27;
 
 def sum_vectors(*vectors):
@@ -98,7 +98,7 @@ print_name(&#x27;HoChang&#x27;)</code></pre>
 <ul>
 <li>&gt;&gt;&gt; my name is HoChang Kim</li>
 </ul>
-<details open><summary>키워드 매개면수</summary>
+<details open><summary>키워드 매개변수</summary>
 <ul>
 <li>함수 호출 시, 해당 매개변수 이름을 명시적으로 지정해서 전달</li>
 <li>즉, 호출할 때 순서보단 x=10, y=20 처럼 키워드로 입력</li>
@@ -135,7 +135,7 @@ if __name__ == &#x27;__main__&#x27;:
 </details>
 <details open><summary><span class="k-blue">set(집합)</span></summary>
 <ul>
-<li>순서 없이 항목 저장, 항목이 중볼될 수 없음</li>
+<li>순서 없이 항목 저장, 항목이 중복될 수 없음</li>
 </ul>
 <pre><code class="lang-python">s1 = set([1,2,3,3,3,4,2])
 print(s1)</code></pre>

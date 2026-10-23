@@ -62,22 +62,22 @@ class  Car :
     def downSpeed(self, value) :
         self.speed -= value
         
-#2단계 : 객체 생성 (인스턴트 생성)
+#2단계 : 객체 생성 (인스턴스 생성)
 mycar1=Car() 
 
 #3단계 : 필드나 메소드 사용
-mycar1.spped = 0
+mycar1.speed = 0
 mycar1.color = &quot;파랑&quot;
 mycar1.upSpeed(30)
 
-print(f&quot;생상 = {mycar1.color}, 속도 = {mycar1.speed}&quot;)
+print(f&quot;색상 = {mycar1.color}, 속도 = {mycar1.speed}&quot;)
  # 색상 = 파랑, 속도 = 30</code></pre>
 </details>
 <details open><summary><span class="k-blue">Constructor(생성자)</span></summary>
 <ul>
 <li><span class="k-blue">Instance(인스턴스)</span>를 생성하면 호출되는 메소드</li>
 <ul>
-<li>mycar1=Car() <br>mycar1.spped = 0<br>mycar1.color = &quot;파랑&quot;</li>
+<li>mycar1=Car() <br>mycar1.speed = 0<br>mycar1.color = &quot;파랑&quot;</li>
 </ul>
 <li>에서 1행에 instance 생성 후 2,3행에서 따로 초기화를 했는데,</li>
 <li>1행 자체에서 instance 생성과 동시에 필드값을 초기화 할 수 있음.</li>
@@ -106,9 +106,9 @@ def __init__(self, value1, value2):
 ## upSpeed(), downSpeed() 함수
 
 myCar1 = Car(&quot;빨강&quot;, 30)
-print(f&quot;생상 = {mycar1.color}, 속도 = {mycar1.speed}&quot;)</code></pre>
+print(f&quot;색상 = {mycar1.color}, 속도 = {mycar1.speed}&quot;)</code></pre>
 <ul>
-<li>&gt;&gt; 생상 = 빨강, 속도 = 30</li>
+<li>&gt;&gt; 색상 = 빨강, 속도 = 30</li>
 </ul>
 <pre><code class="lang-python">class ~~:
 
@@ -127,8 +127,8 @@ print(car1.getName(), car1.getSpeed())
 <li>Class variable : class 안에 공간이 할당된 변수</li>
 </ul>
 <pre><code class="lang-python">class Car:
-color = &#x27;&#x27; # 인스턴트 변수
-speed = 0 # 인스턴트 변수
+color = &#x27;&#x27; # 인스턴스 변수
+speed = 0 # 인스턴스 변수
 count = 0 # 클래스 변수
 
 def __init__(self):
@@ -150,7 +150,7 @@ print(myCar2.speed, myCar2.count) # 60, 2</code></pre>
 </details>
 <details open><summary>Inheritance</summary>
 <ul>
-<li>기존 class의 필와 메소드를 그대로 물려받는 새로운 class</li>
+<li>기존 class의 필드와 메소드를 그대로 물려받는 새로운 class</li>
 </ul>
 <pre><code class="lang-python">class 서브 클래스(슈퍼 클래스):
 //서브 클래스의 내용을 코딩</code></pre>

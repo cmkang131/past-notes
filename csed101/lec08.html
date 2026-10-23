@@ -37,7 +37,7 @@ y=[i for i in range(10)]</code></pre>
 <pre><code class="lang-python">y = [i for i in range(10) if i % 2 == 0]</code></pre>
 <ul>
 <ul>
-<li>⇒ y = [0, 2, 4, 8] # 짝수만 저장</li>
+<li>⇒ y = [0, 2, 4, 6, 8] # 짝수만 저장</li>
 <li>if ~ else ~</li>
 </ul>
 </ul>
@@ -118,14 +118,14 @@ stack.append(&#x27;a&#x27;)
 stack.append(&#x27;b&#x27;)
 stack.append(&#x27;c&#x27;)
 print(&#x27;Initial stack:&#x27;, stack)
-print(&#x27;\nElements popped form stack:&#x27;)
+print(&#x27;\nElements popped from stack:&#x27;)
 print(stack.pop())
 print(stack.pop())
 print(stack.pop())
 print(&#x27;\nStack after elements are popped:&#x27;, stack)</code></pre>
 <pre><code class="lang-python">Initial stack: [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]
 
-Elements popped form stack:
+Elements popped from stack:
 c
 b
 a
@@ -227,7 +227,7 @@ print(set1 - set2)           # Output: {1}</code></pre>
 <details open><summary>collections <span class="k-blue">module(모듈)</span></summary>
 <ul>
 <li>collections : 파이썬 내장 모듈</li>
-<li>deque : 양쪽 끄에서 삽입과 삭제 가능, 스택 큐 모두 지원</li>
+<li>deque : 양쪽 끝에서 삽입과 삭제 가능, 스택 큐 모두 지원</li>
 </ul>
 <pre><code class="lang-python">from collections import deque
 

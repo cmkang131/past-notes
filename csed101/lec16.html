@@ -39,8 +39,8 @@
 <li>std(): → 표준편차</li>
 <li>median(): → 중앙값</li>
 <li>value_counts() → 값의 빈도를 계산하여 반환</li>
-<li>sort_value() → 값 기준 <span class="k-blue">Sort(정렬)</span>된 시리즈 반환</li>
-<li>iloc(): 인덱스 기반으로 데이터에 접근</li>
+<li>sort_values() → 값 기준 <span class="k-blue">Sort(정렬)</span>된 시리즈 반환</li>
+<li>iloc(): 위치(정수) 기반으로 데이터에 접근</li>
 <li>isnull(): 누락된 값을 나타내는 불리언 시리즈 반환</li>
 <li>fillna(value): → 누락된 값을 지정 값으로 채움</li>
 </ul>
@@ -76,7 +76,7 @@ print()
 high_scores_indices = scores[scores&gt;=90].index
 print(&#x27;점수가 90 이상인 학생들의 인덱스&#x27;, high_scores_indices)</code></pre>
 <ul>
-<li>&gt; <span class="k-blue">Stack(스택)</span> 예제<br><span class="k-blue">Class(클래스)</span><br>push, pop, is_empth, peek, size</li>
+<li>&gt; <span class="k-blue">Stack(스택)</span> 예제<br><span class="k-blue">Class(클래스)</span><br>push, pop, is_empty, peek, size</li>
 </ul>
 <pre><code class="lang-python">import pandas as pd
 
@@ -163,7 +163,7 @@ Is stack empty? True</code></pre>
 <li>df.columns: → 열 인덱스 반환</li>
 <li>df.index: → 행 인덱스 반환</li>
 <li>df.loc[row_label, col_label]: 라벨을 이용하여 행과 열을 선택</li>
-<li>df.iloc[low_index, col_index]: 위치(정수)를 이용하여 행과 열을 선택</li>
+<li>df.iloc[row_index, col_index]: 위치(정수)를 이용하여 행과 열을 선택</li>
 <li>df.isnull(): → 결측지(null)가 있는 위치를 확인하여 불리언 형태로 반환</li>
 <li>df.dropna(): → 결측지(null)가 있는 행 또는 열을 삭제</li>
 <li>df.fillna(value): → 결측지(null)를 지정한 값으로 채움</li>
@@ -213,7 +213,7 @@ print(&#x27;행 인덱스: &#x27;)
 print(df.index)
 print()
 
-# ioc - 특정 행과 열 선택
+# loc - 특정 행과 열 선택
 print(&#x27;특정 행과 열 선택:&#x27;)
 print(df.loc[2:3, &#x27;Name&#x27;:&#x27;Score&#x27;])
 print()
@@ -322,7 +322,7 @@ class StudentManagement:
             &#x27;학점&#x27;: 학점
         }])
         self.df = pd.concat([self.df, new_student], ignore_index=True)
-        print(f&#x27;{성명} 학새이 추가되었습니다.&#x27;)
+        print(f&#x27;{성명} 학생이 추가되었습니다.&#x27;)
     
     def remove_student(self,학번):
         if 학번 in self.df[&#x27;학번&#x27;].values:
@@ -340,7 +340,7 @@ class StudentManagement:
 
     def display_students(self):
         if len(self.df) &gt; 0:
-            print(&#x27;전체 학생 몽록:&#x27;)
+            print(&#x27;전체 학생 목록:&#x27;)
             print(self.df)
         else:
             print(&#x27;등록된 학생이 없습니다.&#x27;)
@@ -384,7 +384,7 @@ weights = pd.DataFrame({
 result = students_scores.dot(weights)
 
 # 결과 출력
-print(&#x27;학생멸 우수반, 수학반 총점:&#x27;)
+print(&#x27;학생별 우수반, 수학반 총점:&#x27;)
 print(result)</code></pre>
 </details>
 <details open><summary></summary>

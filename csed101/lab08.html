@@ -34,7 +34,7 @@ print(Dog.count) #-&gt; 2</code></pre>
 <ul>
 <li>self.&lt;statement&gt; ⇒ <span class="k-blue">Class variable(클래스 변수)</span></li>
 <li>def &lt;statement&gt;(self, ): ⇒ <span class="k-blue">Method(메서드)</span></li>
-<li>&lt;<span class="k-blue">Instance(인스턴스)</span>&gt; = &lt;classname&gt;( ~ ) ⇒ 클래스로 인스턴트 생성</li>
+<li>&lt;<span class="k-blue">Instance(인스턴스)</span>&gt; = &lt;classname&gt;( ~ ) ⇒ 클래스로 인스턴스 생성</li>
 </ul>
 <ul>
 <li><code>\&lt;instance\&gt;.\&lt;method\&gt;()</code></li>
@@ -59,7 +59,7 @@ class BankAccount():
         self.balance += amount
 
     def withdraw(self, amount):
-        if balance &gt;= amount:
+        if self.balance &gt;= amount:
             self.balance -= amount
 
     def get_info(self):
