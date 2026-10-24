@@ -17,6 +17,7 @@ a.card:hover .card-t{color:var(--blue)}
 div.card-off{border:1.5px solid var(--rule);padding:16px 22px;margin-top:14px;color:var(--gray)}
 .card-off .card-t{color:var(--gray)}
 .foot{margin-top:40px;font-size:13px;color:var(--gray)}
+.foot a,.t-meta a{color:var(--blue)}
 @media (max-width:760px){
   .paper{padding:24px 18px 44px}
   h1{font-size:24px}
