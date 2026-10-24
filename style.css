@@ -1,4 +1,4 @@
-:root{--ink:#1a1a1a;--red:#b03a32;--gray:#666;--blue:#2456c4;--rule:#1a1a1a}
+:root{--ink:#1a1a1a;--red:#b03a32;--gray:#666;--blue:#9e2b25;--rule:#1a1a1a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif;background:#fff;color:var(--ink);-webkit-tap-highlight-color:transparent}
 .paper{max-width:780px;margin:0 auto;background:#fff;padding:36px 40px 64px}
@@ -27,7 +27,7 @@ div.card-off{border:1.5px solid var(--rule);padding:16px 22px;margin-top:14px;co
 
 
 
-:root{--ink:#1a1a1a;--red:#b03a32;--gray:#666;--blue:#2456c4;--rule:#1a1a1a}
+:root{--ink:#1a1a1a;--red:#b03a32;--gray:#666;--blue:#9e2b25;--rule:#1a1a1a}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif;background:#fff;color:var(--ink);-webkit-tap-highlight-color:transparent}
