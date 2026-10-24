@@ -65,7 +65,7 @@ class FruitShop:
 
     def show_inventory(self):
         for fruit in self._fruits.values():
-            print(f&#x27;{fruit[&#x27;fruit&#x27;]} - 재고: {fruit[&#x27;quantity&#x27;]} 개&#x27;) # print안에 호출하면 str로 호출 됨 (__str__) 
+            print(f&quot;{fruit[&#x27;fruit&#x27;]} - 재고: {fruit[&#x27;quantity&#x27;]} 개&quot;) # print안에 호출하면 str로 호출 됨 (__str__) 
         
     def apply_discount(self, fruit_name, discount):
         if fruit_name in self._fruits:

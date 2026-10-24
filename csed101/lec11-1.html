@@ -170,11 +170,11 @@ advisor = 김교수</code></pre>
 </details>
 <details open><summary><span class="k-blue">Operator Overloading(연산자 오버로딩)</span> example</summary>
 <ul>
-<li>&gt; <span class="k-blue">radd</span> : + 연산자의 왼쪽에 있는 피연산자가 MyNumber 객체가 아닐 때도 처리, <span class="k-blue">radd</span> 메서드에서는 self와 other 두 개의 인자 받음. self는 현재 객체이며, other는 더할 대상 객체, <span class="k-blue">radd</span> 메서드에서는 other와 self.value를 더한 결과를 새로운 MyNumber 객체로 반환</li>
+<li>&gt; <span class="k-blue">__radd__</span> : + 연산자의 왼쪽에 있는 피연산자가 MyNumber 객체가 아닐 때도 처리, <span class="k-blue">__radd__</span> 메서드에서는 self와 other 두 개의 인자 받음. self는 현재 객체이며, other는 더할 대상 객체, <span class="k-blue">__radd__</span> 메서드에서는 other와 self.value를 더한 결과를 새로운 MyNumber 객체로 반환</li>
 <ul>
-<li>num1 + num2 연산을 수행하면, num1.<span class="k-blue">add</span>(num2)가 호출되어 MyNumber(10 + 20)이 출력</li>
-<li>5 + num1 연산을 수행하면, num1.<span class="k-blue">radd</span>(5)가 호출되어 MyNumber(5 + 10)이 출력</li>
-<li><span class="k-blue">add</span> 메서드와 <span class="k-blue">radd</span> 메서드를 함께 사용하여, + 연산자의 양쪽 피연산자가 모두 MyNumber 객체이거나, 왼쪽 피연산자가 정수인 경우에도 처리</li>
+<li>num1 + num2 연산을 수행하면, num1.<span class="k-blue">__add__</span>(num2)가 호출되어 MyNumber(10 + 20)이 출력</li>
+<li>5 + num1 연산을 수행하면, num1.<span class="k-blue">__radd__</span>(5)가 호출되어 MyNumber(5 + 10)이 출력</li>
+<li><span class="k-blue">__add__</span> 메서드와 <span class="k-blue">__radd__</span> 메서드를 함께 사용하여, + 연산자의 양쪽 피연산자가 모두 MyNumber 객체이거나, 왼쪽 피연산자가 정수인 경우에도 처리</li>
 </ul>
 <li>__radd__는 <span class="hl">“right add”</span>, 즉 <span class="hl">오른쪽 피연산자일 때의 덧셈 연산자 오버로딩</span>을 처리하는 특별 메소드</li>
 </ul>
