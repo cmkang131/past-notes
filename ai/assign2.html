@@ -36,32 +36,26 @@ return x_dict	</code></pre>
 -&gt; WeightVector
 
 call evaluatePredictor() -&gt; error 출력.
-output = +1 if the score is precisely 0.
+output = +1 if score &gt;= 0 else -1
+score가 0일 때도 +1을 출력한다.
 ==================================================
-T = TypeVar(&#x27;T&#x27;) &lt;- type이 지정되면, 끝까지 그 type을 유지
+T = TypeVar(&#x27;T&#x27;)
+T = TypeVar(&#x27;T&#x27;)는 제네릭 타입을 표현하기 위한 타입 변수를 선언한다. 함수의 타입 어노테이션에서 동일한 T를 여러 번 사용하면 정적 타입 검사기가 해당 인자와 반환값 사이의 타입 관계를 추론하고 검사할 수 있다. 단, TypeVar는 실행 중 객체의 타입을 강제하거나 변환하지 않는다.
 
-def learnPredictor(trainExamples: List[Tuple[T, int]],
-                   validationExamples: List[Tuple[T, int]],
-                   featureExtractor: Callable[[T], FeatureVector],
-                   numEpochs: int, eta: float) -&gt; WeightVector:
-
-weights = {}   // weight 초기화
-
-for i in range(numEpochs):
-for x,y in trainExamples:
-features = featureExtractor(x)
-
-// 마진이 1 미만일 경우 가중치 업데이트
-// weigts = weigts + (eta*y)*feature
-if dorProduct(weights, features)*y &lt;1
-increament(weigts, eta*y, feature)
-
-// 매 에포크 종류 후 훈련/검증 오차 출력
-train_error = evaluatePredictor(trainExamples, predictor)
-val_error = evaluatePredictor(validationExamples, predictor)
-print(f&quot;Epoch {i}: train error = {train_error}, val error = {val_error}&quot;)
-
-return weights</code></pre>
+def learnPredictor(trainExamples: List[Tuple[T, int]], validationExamples: List[Tuple[T, int]], featureExtractor: Callable[[T], FeatureVector], numEpochs: int, eta: float) -&gt; WeightVector:
+    weights = {}
+    def predictor(x: T) -&gt; int:
+        score = dotProduct(weights, featureExtractor(x))
+        return 1 if score &gt;= 0 else -1
+    for epoch in range(numEpochs):
+        for x, y in trainExamples:
+            features = featureExtractor(x)
+            if dotProduct(weights, features) * y &lt; 1:
+                increment(weights, eta * y, features)
+        train_error = evaluatePredictor(trainExamples, predictor)
+        val_error = evaluatePredictor(validationExamples, predictor)
+        print(f&quot;Epoch {epoch}: train error = {train_error}, val error = {val_error}&quot;)
+    return weights</code></pre>
 </details>
 </details>
 <details open><summary>Problem 4:* Multi-layer Perceptron with Computational <span class="k-blue">Graph(그래프)</span> *<span class="k-blue">-</span><code> nummpy</code></summary>
@@ -90,7 +84,7 @@ forward -&gt; 노드 자신의 value를 찾음 (값 구하기)
 backward -&gt; dependencies의 grad를 구함
 		=dependencies에 대한 grad (파란 글씨 구하기)
 
-grad_initalize -&gt; 기울기 초기화(차원 맞추기)</code></pre>
+grad_initialize -&gt; 기울기 초기화(차원 맞추기)</code></pre>
 <ul>
 <li>computational graph - Matrix multiplication</li>
 </ul>
@@ -104,7 +98,7 @@ self.value = x.value @ y.value
 def backward(self):
 x, y = self.dependencies
 
-x.grad += self.grad @ y.vlaude.T
+x.grad += self.grad @ y.value.T
 y.grad += x.value.T @ self.grad
 
 def grad_initialize(self):
@@ -117,7 +111,7 @@ self.grad = np.zeros_like(self.value)</code></pre>
 def forward(self):
 x, = self.dependencies    //데이터의 개수가 1개인 것을 강제
 
-self.value = 1/(1 + np.exp(-x.vlaue))
+self.value = 1 / (1 + np.exp(-x.value))
 
 def backward(self):
 x, = self.dependencies
@@ -129,23 +123,21 @@ self.grad = np.zeros_like(self.value)</code></pre>
 </details>
 <details open><summary>4b : MLPPredictor forward and backward</summary>
 <pre><code class="lang-python">class MLPPredictor:
+    def __init__(self, input_size, hidden_size, output_size):
+        self.W1 = np.random.randn(input_size, hidden_size)
+        self.W2 = np.random.randn(hidden_size, output_size)
+        self.b1 = np.zeros((1, hidden_size))
+        self.b2 = np.zeros((1, output_size))
 
-def __init__(self, input_size, hidden_size, output_size):
-self.W1 = np.random.randn(input_size, hidden_size)
-    self.W2 = np.random.randn(hidden_size, output_size)
-    self.b1 = np.zeros((1, hidden_size))
-    self.b2 = np.zeros((1, output_size))
-    
 -&gt; w,b 초기화.
-W1 : input_size X hidden_size
-W2 : hieend_size X output_size
-b1 : 1 X hidden_size
-b2 : 1 X output_size 
-
-Y = sigmoid(sigmoid(X@W1 + b1)@W2 + b2)
+- W1 : input_size X hidden_size
+- W2 : hidden_size X output_size
+- b1 : 1 X hidden_size
+- b2 : 1 X output_size
+- Y = sigmoid(sigmoid(X @ W1 + b1) @ W2 + b2)
 ==================================================
 ==================================================
-  def forward(self.x):
+  def forward(self, x):
 x_node = Input(&quot;x&quot;, x.astype(np.float64))
     W1_node = Input(&quot;W1&quot;, self.W1.astype(np.float64))
     b1_node = Input(&quot;b1&quot;, self.b1.astype(np.float64))
@@ -186,7 +178,7 @@ target : true label, 0 or 1 (B,)
 -&gt; outpur: dictionary of gradient
 
 loss의 gradient를 구하는 것이니,
-self.last_output_node.gard = 2(pred-target)이 됨.
+loss의 gradient는 self.last_output_node.grad = 2 * (pred_reshaped - target_reshaped)이다.
 
 --------------------------------------------------
 def backward(self, pred, target):
@@ -217,10 +209,10 @@ b2_grad = node.grad
 gradients = {
 &quot;W1&quot; : W1_grad if W1_grad is not None else np.zeros_like(self.W1),
 &quot;b1&quot; : b1_grad if b1_grad is not None else np.zeros_like(self.b1),
-&quot;W2&quot; : W2_grad if W2_grad is not None else np.zeros_like(self.W2)
+&quot;W2&quot; : W2_grad if W2_grad is not None else np.zeros_like(self.W2),
 &quot;b2&quot; : b2_grad if b2_grad is not None else np.zeros_like(self.b2)
 }
-return gradient
+return gradients
 ==================================================
 
 def update(self, gradients, learning_rate):
@@ -243,15 +235,16 @@ def train(self, X, Y, epochs=100, learning_rate=0.1):
 for i in range(epochs):
 for j in range(X.shape[0]):      &lt;-행(Row)의 개수
 x_sample = X[j:j+1]          
-y_sample = Y[jj:j+1]           -&gt; j번째 행
+y_sample = Y[j:j+1]           -&gt; j번째 행
 pred = self.forward(x_sample)
 gradients = self.backward(pred, y_sample)
 self.update(gradients, learning_rate)
 loss = self.loss(pred, y_sample)
 
 ==================================================
-def predict(self, x)
-return np.round(self.forward(x),4) //-&gt;확률 바탕으로, 결괏값 결정
+def predict(self, x):
+return np.round(self.forward(x), 4)
+이 함수는 예측 확률을 소수점 4자리로 반올림한 값을 반환한다. 0 또는 1로 분류하려면 0.5를 기준으로 임계값을 적용해야 한다. //-&gt;확률 바탕으로, 결괏값 결정
 														//ㄴ 뒤에 4는 반올림 자릿수</code></pre>
 </details>
 </details>
