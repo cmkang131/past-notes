@@ -53,7 +53,7 @@ y=[i for i in range(10)]</code></pre>
 <pre><code class="lang-python">r = []
 for i in &quot;Hello&quot;:
     for j in &quot;World&quot;:
-	r.append(i + j)
+        r.append(i + j)
 # 를 아래와 같이 표현할 수 있음</code></pre>
 <pre><code class="lang-python">w1=&quot;Hello&quot;
 w2=&quot;World&quot;
@@ -98,7 +98,7 @@ print(func_sum(10,10,10,10)) # 40 출력</code></pre>
 </ul>
 <pre><code class="lang-python">def print_args(*args):
     for arg in args:
-	print(arg)
+        print(arg)
 print_args(1, 2, 3 ,4) # 1. 2. 3. 4. 출력</code></pre>
 <ul>
 <li>keyword variable length arguments (키워드 가변 인수)</li>
@@ -107,7 +107,7 @@ print_args(1, 2, 3 ,4) # 1. 2. 3. 4. 출력</code></pre>
 </ul>
 <pre><code class="lang-python">def print_kwargs(**kwargs):
     for key, value in kwargs.items():
-	print(f&quot;{key} = {value}&quot;)
+        print(f&quot;{key} = {value}&quot;)
 print_kwargs(a=1, b=2, c=3)
 # a = 1 b = 2 c = 3 출력</code></pre>
 </details>
