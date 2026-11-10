@@ -52,7 +52,7 @@ y=[i for i in range(10)]</code></pre>
 </ul>
 <pre><code class="lang-python">r = []
 for i in &quot;Hello&quot;:
-for j in &quot;World&quot;:
+    for j in &quot;World&quot;:
 	r.append(i + j)
 # 를 아래와 같이 표현할 수 있음</code></pre>
 <pre><code class="lang-python">w1=&quot;Hello&quot;
@@ -83,8 +83,8 @@ for item in gugudan:
 <li><span class="k-blue">Function(함수)</span>에서 입력 값에 디폴트 값을 정할 수 있음</li>
 </ul>
 <pre><code class="lang-python">def func_sum(a,b,c=10,d=20): # 디폴트 값은 다른 변수들 뒤에 위치해야 함.
-sum=a+b+c+d
-return(sum)
+    sum=a+b+c+d
+    return(sum)
 print(func_sum(10,20)) # 60 출력
 print(func_sum(10,10,10,10)) # 40 출력</code></pre>
 <ul>
@@ -97,7 +97,7 @@ print(func_sum(10,10,10,10)) # 40 출력</code></pre>
 <li>인자들은 함수 내부에서 <span class="k-blue">tuple(튜플)</span>로 처리</li>
 </ul>
 <pre><code class="lang-python">def print_args(*args):
-for arg in args:
+    for arg in args:
 	print(arg)
 print_args(1, 2, 3 ,4) # 1. 2. 3. 4. 출력</code></pre>
 <ul>
@@ -106,7 +106,7 @@ print_args(1, 2, 3 ,4) # 1. 2. 3. 4. 출력</code></pre>
 <li>인자들은 함수 내부에서 <span class="k-blue">dictionary(딕셔너리)</span>로 처리</li>
 </ul>
 <pre><code class="lang-python">def print_kwargs(**kwargs):
-for key, value in kwargs.items():
+    for key, value in kwargs.items():
 	print(f&quot;{key} = {value}&quot;)
 print_kwargs(a=1, b=2, c=3)
 # a = 1 b = 2 c = 3 출력</code></pre>
