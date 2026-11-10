@@ -40,7 +40,7 @@ output = +1 if score &gt;= 0 else -1
 score가 0일 때도 +1을 출력한다.
 ==================================================
 T = TypeVar(&#x27;T&#x27;)
-T = TypeVar(&#x27;T&#x27;)는 제네릭 타입을 표현하기 위한 타입 변수를 선언한다. 함수의 타입 어노테이션에서 동일한 T를 여러 번 사용하면 정적 타입 검사기가 해당 인자와 반환값 사이의 타입 관계를 추론하고 검사할 수 있다. 단, TypeVar는 실행 중 객체의 타입을 강제하거나 변환하지 않는다.
+T = TypeVar(&#x27;T&#x27;)는 제네릭 타입을 표현하기 위한 타입 변수를 선언한다. 함수의 타입 어노테이션에서 동일한 T를 여러 번 사용하면 정적 타입 검사기가 해당 인자와 반환값 사이의 타입 관계를 추론하고 검사할 수 있다. 단, TypeVar는 실행 중 객체의 타입을 강제하거나 변환하지 않는다. learnPredictor 함수에서는 T가 입력 예제의 타입을 나타내고, 반환 타입은 WeightVector로 고정되어 있다. 즉, T는 입력 타입의 일관성을 보장하지만, 반환 타입을 결정하지는 않는다.
 
 def learnPredictor(trainExamples: List[Tuple[T, int]], validationExamples: List[Tuple[T, int]], featureExtractor: Callable[[T], FeatureVector], numEpochs: int, eta: float) -&gt; WeightVector:
     weights = {}
@@ -107,19 +107,15 @@ self.grad = np.zeros_like(self.value)</code></pre>
 <li>computational graph - Sigmoid</li>
 </ul>
 <pre><code class="lang-python">class Sigmoid(Node):
-&quot;&quot;&quot;Sigmoid activaion&quot;&quot;&quot;
-def forward(self):
-x, = self.dependencies    //데이터의 개수가 1개인 것을 강제
-
-self.value = 1 / (1 + np.exp(-x.value))
-
-def backward(self):
-x, = self.dependencies
-
-x.grad += self.grad * self.value * (1 - self.value)
-
-def grad_initialize(self):
-self.grad = np.zeros_like(self.value)</code></pre>
+    &quot;&quot;&quot;Sigmoid activation&quot;&quot;&quot;
+    def forward(self):
+        x, = self.dependencies  # self.dependencies가 1개의 원소를 가진 튜플일 때만 동작한다.
+        self.value = 1 / (1 + np.exp(-x.value))
+    def backward(self):
+        x, = self.dependencies
+        x.grad += self.grad * self.value * (1 - self.value)
+    def grad_initialize(self):
+        self.grad = np.zeros_like(self.value)</code></pre>
 </details>
 <details open><summary>4b : MLPPredictor forward and backward</summary>
 <pre><code class="lang-python">class MLPPredictor:
@@ -135,6 +131,7 @@ self.grad = np.zeros_like(self.value)</code></pre>
 - b1 : 1 X hidden_size
 - b2 : 1 X output_size
 - Y = sigmoid(sigmoid(X @ W1 + b1) @ W2 + b2)
+이 모델은 이진 분류를 위한 것이며, output_size=1일 때만 Sigmoid 출력이 확률로 해석될 수 있다.
 ==================================================
 ==================================================
   def forward(self, x):
@@ -160,8 +157,7 @@ node.forward()
 self.last_nodes = nodes
 self.last_output_node = output_node
 
-return output_node.value.squeeze()     //-&gt; 예측값.
-										//squeeze =&gt; 요소가 1개인 행렬 -&gt; scalar
+return output_node.value.squeeze()  # output_node.value의 형태가 (1, 1)이면 스칼라, (B, 1)이면 (B,) 형태가 된다.
 ==================================================
 ==================================================
 
@@ -228,7 +224,7 @@ Y: ture labels, (N,)
 epochs: number of epochs to train
 learning_rate: step size for weight update
 Outputs
-loss: squared loss of the last step
+loss: squared loss of the last step (train 함수 내부에서 계산되지만, 반환되지 않는다.)
 --------------------------------------------------
 
 def train(self, X, Y, epochs=100, learning_rate=0.1):
@@ -243,9 +239,10 @@ loss = self.loss(pred, y_sample)
 
 ==================================================
 def predict(self, x):
-return np.round(self.forward(x), 4)
-이 함수는 예측 확률을 소수점 4자리로 반올림한 값을 반환한다. 0 또는 1로 분류하려면 0.5를 기준으로 임계값을 적용해야 한다. //-&gt;확률 바탕으로, 결괏값 결정
-														//ㄴ 뒤에 4는 반올림 자릿수</code></pre>
+    return np.round(self.forward(x), 4)
+이 함수는 예측 확률을 소수점 4자리로 반올림한 값을 반환한다. 0 또는 1로 분류하려면 0.5를 기준으로 임계값을 적용해야 하며, 현재 코드에는 임계값 적용이 없다. 0 또는 1로 분류하려면 다음과 같이 작성해야 한다.
+def predict(self, x):
+    return (self.forward(x) &gt;= 0.5).astype(int)</code></pre>
 </details>
 </details>
 </div>
