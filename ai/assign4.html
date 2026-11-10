@@ -59,13 +59,14 @@
                 computeQ(V, state, action)
                 for action in stateActions[state]
             )
-        if max(
+        delta = max(
             abs(V[state] - newV[state])
             for state in stateActions
-        ) &lt;= epsilon:
-            break
+        )
         V = newV
         numIters += 1
+        if delta &lt;= epsilon:
+            break
     V_opt = V
     print((&quot;valueIteration: %d iterations&quot; % numIters))
     return computePolicy(V_opt)</code></pre>
