@@ -66,8 +66,7 @@ def learnPredictor(trainExamples: List[Tuple[T, int]], validationExamples: List[
 <pre><code class="lang-python">class Node:
     def __init__(self, name: str, *dependencies):
         self.name = name
-        self.dependencies = dependencies 
-						 // node that this node depens on (아래)
+        self.dependencies = dependencies  # node that this node depends on (아래)
         self.value = None
         self.grad = None
     def forward(self):
@@ -125,7 +124,7 @@ self.grad = np.zeros_like(self.value)</code></pre>
         self.b1 = np.zeros((1, hidden_size))
         self.b2 = np.zeros((1, output_size))
 
--&gt; w,b 초기화.
+# w, b 초기화.
 - W1 : input_size X hidden_size
 - W2 : hidden_size X output_size
 - b1 : 1 X hidden_size
@@ -141,7 +140,7 @@ x_node = Input(&quot;x&quot;, x.astype(np.float64))
     W2_node = Input(&quot;W2&quot;, self.W2.astype(np.float64))
     b2_node = Input(&quot;b2&quot;, self.b2.astype(np.float64))
   
-  // 각 객체를 생성하는 단계
+  # 각 객체를 생성하는 단계
   z1 = MatMul(&quot;z1&quot;,x_node, W1_node)
   hidden_input = Add(&quot;hidden_input&quot;, z1, b1_node)
   hidden = Sigmoid(&quot;hidden&quot;,hidden_input)
@@ -149,8 +148,8 @@ x_node = Input(&quot;x&quot;, x.astype(np.float64))
   final_input = Add(&quot;final_input&quot;, z2, b2_node)
   output_node = Sigmoid(&quot;output_node&quot;, final_input)
   
-  //
-  nodes = topological_sort(output_node) //노드 정렬-numpy.ndarray
+  #
+  nodes = topological_sort(output_node)  # 노드 정렬 - numpy.ndarray
   for node in nodes:
 node.forward()
 
@@ -161,9 +160,9 @@ return output_node.value.squeeze()  # output_node.value의 형태가 (1, 1)이�
 ==================================================
 ==================================================
 
-@staticmethod   //-&gt; 클래스 밖에서 정의하는 일반 함수처럼 만듦 &quot;self.&quot; 필요 X)
+@staticmethod  # 인스턴스나 클래스를 첫 번째 인수로 자동 전달하지 않으므로 self가 필요하지 않음
 def loss(pred, target):
-return (pred-target)**2 //squared loss
+return (pred-target)**2  # squared loss
 
 ==================================================
 ==================================================
@@ -171,7 +170,7 @@ return (pred-target)**2 //squared loss
 pred : predicted probability (0 to 1), (B,)
 target : true label, 0 or 1 (B,)
 (B,) == 길이가 B인 1차원 배열(Vector)
--&gt; outpur: dictionary of gradient
+# output: dictionary of gradients
 
 loss의 gradient를 구하는 것이니,
 loss의 gradient는 self.last_output_node.grad = 2 * (pred_reshaped - target_reshaped)이다.
@@ -180,12 +179,12 @@ loss의 gradient는 self.last_output_node.grad = 2 * (pred_reshaped - target_res
 def backward(self, pred, target):
 pred_reshaped = pred.reshape(-1,1)
 target_reshaped = target.reshape(-1,1)
-		//reshape(n,m) : n=행의 크기, m=열의 크기
-				//reshape(행,열)
-				//n=-1 -&gt; 전체 데이터 계수를 m으로 나눠서 알아서 크기 만듦.
+		# reshape(n, m): n은 행의 크기, m은 열의 크기
+				# reshape(행, 열)
+				# n=-1이면 전체 데이터의 원소 수와 m을 바탕으로 행의 크기를 자동으로 추론함.
 
 for node in self.last_nodes:
-node.grad_initialize()             //초기화
+node.grad_initialize()  # 초기화
 
 self.last_output_node.grad = 2*(pred_reshaped-target_reshaped)
 
@@ -229,9 +228,9 @@ loss: squared loss of the last step (train 함수 내부에서 계산되지만, 
 
 def train(self, X, Y, epochs=100, learning_rate=0.1):
 for i in range(epochs):
-for j in range(X.shape[0]):      &lt;-행(Row)의 개수
+for j in range(X.shape[0]):  # 행(Row)의 개수
 x_sample = X[j:j+1]          
-y_sample = Y[j:j+1]           -&gt; j번째 행
+y_sample = Y[j:j+1]  # j번째 행
 pred = self.forward(x_sample)
 gradients = self.backward(pred, y_sample)
 self.update(gradients, learning_rate)
